@@ -1,0 +1,24 @@
+Links for videos
+
+../olt-tools-media-player-ws/index.html?v=1cb791c4-4776-43f1-9c21-a0413ea3873b&s=170&l=pb01st01
+
+
+Short O 
+http://127.0.0.1:3000/olt-tools-media-player-ws/index.html?v=b1358a98-3e8f-4607-8c88-bd151514f486&s=170&l="forward url here..."
+https://media.reallygreatreading.com/player/b1358a98-3e8f-4607-8c88-bd151514f486?s=170&l="forward url here..."
+
+Short U
+http://127.0.0.1:3000/olt-tools-media-player-ws/index.html?v=773828dd-2b30-4274-95bd-9abd5d1f3971&s=170&l="forward url here..."
+https://media.reallygreatreading.com/player/773828dd-2b30-4274-95bd-9abd5d1f3971?s=170&l="forward url here..."
+
+Short I 
+http://127.0.0.1:3000/olt-tools-media-player-ws/index.html?v=8f619775-5cd6-4d18-9f73-909b006a5517&s=170&l="forward url here..."
+https://media.reallygreatreading.com/player/8f619775-5cd6-4d18-9f73-909b006a5517?s=170&l="forward url here..."
+
+Short E
+http://127.0.0.1:3000/olt-tools-media-player-ws/index.html?v=7764a654-fabf-4371-9168-f4c10c63133f&s=170&l="forward url here..."
+https://media.reallygreatreading.com/player/7764a654-fabf-4371-9168-f4c10c63133f?s=170&l="forward url here..."
+
+Short A 
+http://127.0.0.1:3000/olt-tools-media-player-ws/index.html?v=1cb791c4-4776-43f1-9c21-a0413ea3873b&s=170&l="forward url here..."
+https://media.reallygreatreading.com/player/1cb791c4-4776-43f1-9c21-a0413ea3873b?s=170&l="forward url here..."
