@@ -2,290 +2,293 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "6NMUjnxbP5t":
+      case "6Ik3i1eBNSb":
         Script1();
         break;
-      case "66gMMTWkIEA":
+      case "6eIJ1sKM9qn":
         Script2();
         break;
-      case "5jqJYzSajVL":
+      case "6BzQaiCqlG2":
         Script3();
         break;
-      case "6ebtjo3bE06":
+      case "5jUwpc8UDF8":
         Script4();
         break;
-      case "697zQb99mEf":
+      case "5aLUVMqF9FS":
         Script5();
         break;
-      case "60He1tL3dbt":
+      case "6Nrz0oaIL9a":
         Script6();
         break;
-      case "6NFTRlJh6wP":
+      case "6mUD1w9BROa":
         Script7();
         break;
-      case "6amf48DqJq9":
+      case "6UddtrgWa0C":
         Script8();
         break;
-      case "6bse7GqbHQR":
+      case "6DqOGSqnEZ7":
         Script9();
         break;
-      case "6WMscFX2MzR":
+      case "5eNJ20kAjYd":
         Script10();
         break;
-      case "5tEA7IZ7hql":
+      case "6D20umOqAuu":
         Script11();
         break;
-      case "6IuNE7WhF1F":
+      case "6Tnjb9fGNcM":
         Script12();
         break;
-      case "6UFVbwJOix9":
+      case "5j6zyYHtYSr":
         Script13();
         break;
-      case "6KkKYDVW8Ju":
+      case "6Pb1ixnFm2B":
         Script14();
         break;
-      case "5VpoxjgukeD":
+      case "5nonk7wWLjY":
         Script15();
         break;
-      case "6EqziY4m3yF":
+      case "6qq2kUrsysb":
         Script16();
         break;
-      case "6Q4ps6ctLc5":
+      case "6RV8a8uPrZh":
         Script17();
         break;
-      case "6JCwbJep0yt":
+      case "6GpyRzFzHmV":
         Script18();
         break;
-      case "6Jc7DreqgB3":
+      case "6qS4cugZdAl":
         Script19();
         break;
-      case "5vEbaZbu2JR":
+      case "66KRftCSrmU":
         Script20();
         break;
-      case "6O5dXUSESHc":
+      case "6WkRYNpp6Xe":
         Script21();
         break;
-      case "6J7szQh7smn":
+      case "5rCZ4ltNMUc":
         Script22();
         break;
-      case "5iGG0sffkj2":
+      case "6cdPSVt6lkz":
         Script23();
         break;
-      case "5ojk3Y8ye7g":
+      case "6SWy2sJfM0w":
         Script24();
         break;
-      case "5vDaoyeSHaM":
+      case "5a3YKGTxpd0":
         Script25();
         break;
-      case "6ZPhTWIDfy5":
+      case "5pjyg7UjvmZ":
         Script26();
         break;
-      case "6gBP9xEVZzl":
+      case "5eyIrBgHuQM":
         Script27();
         break;
-      case "5kORiqoXrHC":
+      case "6RXder5dyQN":
         Script28();
         break;
-      case "5lJ4ppvcxHK":
+      case "6HxEJPYc0i4":
         Script29();
         break;
-      case "5fvBej93ELJ":
+      case "6jGYUA5DK4P":
         Script30();
         break;
-      case "6nQlyPEUDE4":
+      case "5zO5ud7s36y":
         Script31();
         break;
-      case "68q2hFXUbXi":
+      case "6Fw6czkFV0e":
         Script32();
         break;
-      case "5XdcKUee7QE":
+      case "6WNXFvgWxzK":
         Script33();
         break;
-      case "60f6jfiXtOo":
+      case "6iRuKJbHF3l":
         Script34();
         break;
-      case "6e28iyi4sl2":
+      case "617kcYdtdCZ":
         Script35();
         break;
-      case "6hE7wJFr5eW":
+      case "60TSQ4BcKDi":
         Script36();
         break;
-      case "61EiGoN7las":
+      case "62lgZG1JY2W":
         Script37();
         break;
-      case "5z8uDxNiESJ":
+      case "67ZQYlyn3IS":
         Script38();
         break;
-      case "6eASoweNJAX":
+      case "5cj6g7LlZhG":
         Script39();
         break;
-      case "6RqCrx8Cc92":
+      case "6UJI3cSVtZy":
         Script40();
         break;
-      case "5jK9DYpWnE5":
+      case "5iwfwxKcPJQ":
         Script41();
         break;
-      case "6CEXGN3rsV3":
+      case "5sdC0GcQcYn":
         Script42();
         break;
-      case "6RemkhYWf6O":
+      case "6a0ScXl5J69":
         Script43();
         break;
-      case "5cmVBGJjLJ2":
+      case "6Jc90kfblph":
         Script44();
         break;
-      case "64U97mMLtJr":
+      case "5xaN3wVdjH7":
         Script45();
         break;
-      case "65I25wmzG0e":
+      case "6jZdLMDFrZd":
         Script46();
         break;
-      case "66QkktlVU1C":
+      case "6iRzRdW2QIi":
         Script47();
         break;
-      case "5nTzxx3wXh6":
+      case "62TJoK1kGDV":
         Script48();
         break;
-      case "6PAl4oN8Qud":
+      case "605PwOJGhtw":
         Script49();
         break;
-      case "5WxWVV0OjdC":
+      case "6fgVpyBgSWW":
         Script50();
         break;
-      case "6p7HhyFZV9a":
+      case "5Yi8wKdvVDJ":
         Script51();
         break;
-      case "6jBdhMTpr7P":
+      case "6GOt1gySk3q":
         Script52();
         break;
-      case "5oiUt0gs7yA":
+      case "5dGsl7T6r8B":
         Script53();
         break;
-      case "5wRLlYy0bLd":
+      case "62GJ6urMXZx":
         Script54();
         break;
-      case "6BYteqKGkKT":
+      case "688kkQdbw5b":
         Script55();
         break;
-      case "5vscc7xdNBO":
+      case "6NX3tHtmKZJ":
         Script56();
         break;
-      case "6UKzmAKeWwh":
+      case "6VSoxjtlPVa":
         Script57();
         break;
-      case "6Owvq1uEVgC":
+      case "6bqastmYiJ4":
         Script58();
         break;
-      case "6DeJupvH6CG":
+      case "6K3z0RQlnLP":
         Script59();
         break;
-      case "5mkiw2fxmGB":
+      case "5tQ8XT7emBY":
         Script60();
         break;
-      case "6hEICfji7Qa":
+      case "6AVwpzxdNMe":
         Script61();
         break;
-      case "5kN3vtGGR3R":
+      case "6NVGJUt9dQU":
         Script62();
         break;
-      case "6Ck4vTbNdyO":
+      case "6QbGtK6toEi":
         Script63();
         break;
-      case "5r1MBX0N9CR":
+      case "6ILkZEBYEsv":
         Script64();
         break;
-      case "66lgY1Do7Kx":
+      case "5hMakmqNi3f":
         Script65();
         break;
-      case "5Xgr7A0sD2K":
+      case "5iK2OWZWADg":
         Script66();
         break;
-      case "6RMseOQmTwW":
+      case "6gkUhjwSJO3":
         Script67();
         break;
-      case "5ubpVkr7Oy7":
+      case "6eH8kkc2YHb":
         Script68();
         break;
-      case "5qGNQTdQA3j":
+      case "5Wg6hhn5Eyc":
         Script69();
         break;
-      case "6FuqVvnv60u":
+      case "6j4p56Tnq2c":
         Script70();
         break;
-      case "6Wl7PrJeULS":
+      case "6lJbKeVY27B":
         Script71();
         break;
-      case "5si4jYaJa4O":
+      case "6555E46aQto":
         Script72();
         break;
-      case "6Wxct3WMRlu":
+      case "6oovcQDXWEw":
         Script73();
         break;
-      case "6orB5OWWdZl":
+      case "6BCdS3VMg7y":
         Script74();
         break;
-      case "6NRq512wpiP":
+      case "5t4iMkr1oIM":
         Script75();
         break;
-      case "6pVRpaSluUi":
+      case "6l3OECr85Om":
         Script76();
         break;
-      case "6TFoZGpO3Wh":
+      case "68psFK4DebC":
         Script77();
         break;
-      case "6mBYKpbzXU8":
+      case "6GV3c96a0dm":
         Script78();
         break;
-      case "6B40j0TD1N5":
+      case "5Z1PVWivikk":
         Script79();
         break;
-      case "6dJkfouqvaH":
+      case "6AO97RKHXmK":
         Script80();
         break;
-      case "5w3NdZu3Ani":
+      case "6VpOcEeOmeV":
         Script81();
         break;
-      case "5cicLCwTNJP":
+      case "615aTALIjoc":
         Script82();
         break;
-      case "5W4iHlJjAUA":
+      case "6KihQPnFIGw":
         Script83();
         break;
-      case "6qciWeqMRvp":
+      case "5ovExbayRcU":
         Script84();
         break;
-      case "6MHCJB8GyCV":
+      case "6AH1GOsQQ5L":
         Script85();
         break;
-      case "6T9mSjLYlLq":
+      case "5kmA4ReiQOm":
         Script86();
         break;
-      case "6QZoSNCLo2g":
+      case "5X51rUkkd9W":
         Script87();
         break;
-      case "6IgW4NQmk65":
+      case "65owmMoSdu7":
         Script88();
         break;
-      case "6GGk0JQvwEj":
+      case "6TxBkdG3cSX":
         Script89();
         break;
-      case "6ZvNNy63wnG":
+      case "6SqsnGIGSmP":
         Script90();
         break;
-      case "5uKakrSw32G":
+      case "5vWOQnFzRgn":
         Script91();
         break;
-      case "64kI5oyiMRr":
+      case "6VjIdXdFt22":
         Script92();
         break;
-      case "6CCRlnTFfMI":
+      case "5wAfPsei0s8":
         Script93();
         break;
-      case "6ct4Jwklyp1":
+      case "5wslQz1dShE":
         Script94();
         break;
-      case "5jwL4XaXoDJ":
+      case "5uwHjhxsNqo":
         Script95();
+        break;
+      case "6a9ID14S4K0":
+        Script96();
         break;
   }
 }
@@ -847,6 +850,29 @@ target.animate(
 window.Script25 = function()
 {
   player.once(() => {
+const target = object('6lb7uUBvwkF');
+const duration = 750;
+const easing = 'ease-out';
+const id = '6GPtK9YZLpx';
+const pulseAmount = 0.07;
+const delay = 26750;
+addToTimeline(
+target.animate(
+[ {scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' }, 
+{scale: `${1 + pulseAmount}` }, 
+{scale: '1' } ]
+,
+  { fill: 'forwards', delay, duration, easing }
+), id
+);
+});
+}
+
+window.Script26 = function()
+{
+  player.once(() => {
 const target = object('5mBMOghnR2Y');
 const duration = 750;
 const easing = 'ease-out';
@@ -867,7 +893,7 @@ target.animate(
 });
 }
 
-window.Script26 = function()
+window.Script27 = function()
 {
   player.once(() => {
 const target = object('5nkgHR4pwAX');
@@ -890,7 +916,7 @@ target.animate(
 });
 }
 
-window.Script27 = function()
+window.Script28 = function()
 {
   player.once(() => {
 const target = object('5rOza2qRZKX');
@@ -913,7 +939,7 @@ target.animate(
 });
 }
 
-window.Script28 = function()
+window.Script29 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -935,7 +961,7 @@ target.animate(
 );
 }
 
-window.Script29 = function()
+window.Script30 = function()
 {
   const target = object('5vPlgC0AGV1');
 const duration = 1500;
@@ -956,7 +982,7 @@ target.animate(
 );
 }
 
-window.Script30 = function()
+window.Script31 = function()
 {
   const target = object('5qY5vwAWuIe');
 const duration = 1500;
@@ -977,7 +1003,7 @@ target.animate(
 );
 }
 
-window.Script31 = function()
+window.Script32 = function()
 {
   const target = object('5rOza2qRZKX');
 const duration = 1500;
@@ -998,7 +1024,7 @@ target.animate(
 );
 }
 
-window.Script32 = function()
+window.Script33 = function()
 {
   player.once(() => {
 const target = object('6iJnB6Uni16');
@@ -1021,7 +1047,7 @@ target.animate(
 });
 }
 
-window.Script33 = function()
+window.Script34 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -1043,7 +1069,7 @@ target.animate(
 );
 }
 
-window.Script34 = function()
+window.Script35 = function()
 {
   player.once(() => {
 const target = object('6kHdCmk5us9');
@@ -1066,7 +1092,7 @@ target.animate(
 });
 }
 
-window.Script35 = function()
+window.Script36 = function()
 {
   player.once(() => {
 const target = object('6ZncsDaD43B');
@@ -1089,7 +1115,7 @@ target.animate(
 });
 }
 
-window.Script36 = function()
+window.Script37 = function()
 {
   player.once(() => {
 const target = object('6i17k43pT4C');
@@ -1112,7 +1138,7 @@ target.animate(
 });
 }
 
-window.Script37 = function()
+window.Script38 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -1134,7 +1160,7 @@ target.animate(
 );
 }
 
-window.Script38 = function()
+window.Script39 = function()
 {
   const target = object('6i17k43pT4C');
 const duration = 1500;
@@ -1155,7 +1181,7 @@ target.animate(
 );
 }
 
-window.Script39 = function()
+window.Script40 = function()
 {
   player.once(() => {
 const target = object('6bLCw6aAMkL');
@@ -1178,7 +1204,7 @@ target.animate(
 });
 }
 
-window.Script40 = function()
+window.Script41 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -1200,7 +1226,7 @@ target.animate(
 );
 }
 
-window.Script41 = function()
+window.Script42 = function()
 {
   player.once(() => {
 const target = object('5bp0trzm1xF');
@@ -1223,7 +1249,7 @@ target.animate(
 });
 }
 
-window.Script42 = function()
+window.Script43 = function()
 {
   player.once(() => {
 const target = object('5rGElrxsMrA');
@@ -1246,7 +1272,7 @@ target.animate(
 });
 }
 
-window.Script43 = function()
+window.Script44 = function()
 {
   player.once(() => {
 const target = object('6o2UIBBk1MT');
@@ -1269,7 +1295,7 @@ target.animate(
 });
 }
 
-window.Script44 = function()
+window.Script45 = function()
 {
   player.once(() => {
 const target = object('6D7N9ivrEjv');
@@ -1292,7 +1318,7 @@ target.animate(
 });
 }
 
-window.Script45 = function()
+window.Script46 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -1314,7 +1340,7 @@ target.animate(
 );
 }
 
-window.Script46 = function()
+window.Script47 = function()
 {
   const target = object('5ZptlL8dg2O');
 const duration = 1500;
@@ -1335,7 +1361,7 @@ target.animate(
 );
 }
 
-window.Script47 = function()
+window.Script48 = function()
 {
   const target = object('6XKvL9sMu4u');
 const duration = 1500;
@@ -1356,7 +1382,7 @@ target.animate(
 );
 }
 
-window.Script48 = function()
+window.Script49 = function()
 {
   const target = object('6D7N9ivrEjv');
 const duration = 1500;
@@ -1377,7 +1403,7 @@ target.animate(
 );
 }
 
-window.Script49 = function()
+window.Script50 = function()
 {
   player.once(() => {
 const target = object('6WcORRrIUCE');
@@ -1400,7 +1426,7 @@ target.animate(
 });
 }
 
-window.Script50 = function()
+window.Script51 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -1422,7 +1448,7 @@ target.animate(
 );
 }
 
-window.Script51 = function()
+window.Script52 = function()
 {
   player.once(() => {
 const target = object('5i0VB3ZKJtI');
@@ -1445,7 +1471,7 @@ target.animate(
 });
 }
 
-window.Script52 = function()
+window.Script53 = function()
 {
   player.once(() => {
 const target = object('6qwxFiOECT3');
@@ -1468,7 +1494,7 @@ target.animate(
 });
 }
 
-window.Script53 = function()
+window.Script54 = function()
 {
   player.once(() => {
 const target = object('6cx0YN6AkgS');
@@ -1491,7 +1517,7 @@ target.animate(
 });
 }
 
-window.Script54 = function()
+window.Script55 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -1513,7 +1539,7 @@ target.animate(
 );
 }
 
-window.Script55 = function()
+window.Script56 = function()
 {
   const target = object('6cx0YN6AkgS');
 const duration = 1500;
@@ -1534,7 +1560,7 @@ target.animate(
 );
 }
 
-window.Script56 = function()
+window.Script57 = function()
 {
   player.once(() => {
 const target = object('6AGg0MaqIzb');
@@ -1557,7 +1583,7 @@ target.animate(
 });
 }
 
-window.Script57 = function()
+window.Script58 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -1579,7 +1605,7 @@ target.animate(
 );
 }
 
-window.Script58 = function()
+window.Script59 = function()
 {
   player.once(() => {
 const target = object('6B0gEtFYuQZ');
@@ -1602,7 +1628,7 @@ target.animate(
 });
 }
 
-window.Script59 = function()
+window.Script60 = function()
 {
   player.once(() => {
 const target = object('6jh8Uxkjqsm');
@@ -1625,7 +1651,7 @@ target.animate(
 });
 }
 
-window.Script60 = function()
+window.Script61 = function()
 {
   player.once(() => {
 const target = object('6bkgZ5iqYn4');
@@ -1648,7 +1674,7 @@ target.animate(
 });
 }
 
-window.Script61 = function()
+window.Script62 = function()
 {
   player.once(() => {
 const target = object('6aj1gojQYCO');
@@ -1671,7 +1697,7 @@ target.animate(
 });
 }
 
-window.Script62 = function()
+window.Script63 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -1693,7 +1719,7 @@ target.animate(
 );
 }
 
-window.Script63 = function()
+window.Script64 = function()
 {
   const target = object('6LAa4FcPBgM');
 const duration = 1500;
@@ -1714,7 +1740,7 @@ target.animate(
 );
 }
 
-window.Script64 = function()
+window.Script65 = function()
 {
   const target = object('5zKj5neZu5a');
 const duration = 1500;
@@ -1735,7 +1761,7 @@ target.animate(
 );
 }
 
-window.Script65 = function()
+window.Script66 = function()
 {
   const target = object('6aj1gojQYCO');
 const duration = 1500;
@@ -1756,7 +1782,7 @@ target.animate(
 );
 }
 
-window.Script66 = function()
+window.Script67 = function()
 {
   player.once(() => {
 const target = object('6V3lg47BoB4');
@@ -1779,7 +1805,7 @@ target.animate(
 });
 }
 
-window.Script67 = function()
+window.Script68 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -1801,7 +1827,7 @@ target.animate(
 );
 }
 
-window.Script68 = function()
+window.Script69 = function()
 {
   player.once(() => {
 const target = object('5zS3Hz2X5ps');
@@ -1824,7 +1850,7 @@ target.animate(
 });
 }
 
-window.Script69 = function()
+window.Script70 = function()
 {
   player.once(() => {
 const target = object('5e1MmTLQ3vD');
@@ -1847,7 +1873,7 @@ target.animate(
 });
 }
 
-window.Script70 = function()
+window.Script71 = function()
 {
   player.once(() => {
 const target = object('6huGCVuryCd');
@@ -1870,7 +1896,7 @@ target.animate(
 });
 }
 
-window.Script71 = function()
+window.Script72 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -1892,7 +1918,7 @@ target.animate(
 );
 }
 
-window.Script72 = function()
+window.Script73 = function()
 {
   const target = object('6huGCVuryCd');
 const duration = 1500;
@@ -1913,7 +1939,7 @@ target.animate(
 );
 }
 
-window.Script73 = function()
+window.Script74 = function()
 {
   player.once(() => {
 const target = object('6a9P9WTzEii');
@@ -1936,7 +1962,7 @@ target.animate(
 });
 }
 
-window.Script74 = function()
+window.Script75 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -1958,7 +1984,7 @@ target.animate(
 );
 }
 
-window.Script75 = function()
+window.Script76 = function()
 {
   player.once(() => {
 const target = object('6J7TvXZptO1');
@@ -1981,7 +2007,7 @@ target.animate(
 });
 }
 
-window.Script76 = function()
+window.Script77 = function()
 {
   player.once(() => {
 const target = object('5YUPDgi2W8i');
@@ -2004,7 +2030,7 @@ target.animate(
 });
 }
 
-window.Script77 = function()
+window.Script78 = function()
 {
   player.once(() => {
 const target = object('5Yjtjo085Db');
@@ -2027,7 +2053,7 @@ target.animate(
 });
 }
 
-window.Script78 = function()
+window.Script79 = function()
 {
   player.once(() => {
 const target = object('64B7E5njLVZ');
@@ -2050,7 +2076,7 @@ target.animate(
 });
 }
 
-window.Script79 = function()
+window.Script80 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -2072,7 +2098,7 @@ target.animate(
 );
 }
 
-window.Script80 = function()
+window.Script81 = function()
 {
   const target = object('6Bd0XeQKLuw');
 const duration = 1500;
@@ -2093,7 +2119,7 @@ target.animate(
 );
 }
 
-window.Script81 = function()
+window.Script82 = function()
 {
   const target = object('6YjQFEBD2fe');
 const duration = 1500;
@@ -2114,7 +2140,7 @@ target.animate(
 );
 }
 
-window.Script82 = function()
+window.Script83 = function()
 {
   const target = object('64B7E5njLVZ');
 const duration = 1500;
@@ -2135,7 +2161,7 @@ target.animate(
 );
 }
 
-window.Script83 = function()
+window.Script84 = function()
 {
   player.once(() => {
 const target = object('5Yp3cVVXtqB');
@@ -2158,7 +2184,7 @@ target.animate(
 });
 }
 
-window.Script84 = function()
+window.Script85 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -2180,7 +2206,7 @@ target.animate(
 );
 }
 
-window.Script85 = function()
+window.Script86 = function()
 {
   player.once(() => {
 const target = object('624N1sYtpe7');
@@ -2203,7 +2229,7 @@ target.animate(
 });
 }
 
-window.Script86 = function()
+window.Script87 = function()
 {
   player.once(() => {
 const target = object('5wMZhjTbNed');
@@ -2226,7 +2252,7 @@ target.animate(
 });
 }
 
-window.Script87 = function()
+window.Script88 = function()
 {
   player.once(() => {
 const target = object('6YtcvhMWYs8');
@@ -2249,7 +2275,7 @@ target.animate(
 });
 }
 
-window.Script88 = function()
+window.Script89 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -2271,7 +2297,7 @@ target.animate(
 );
 }
 
-window.Script89 = function()
+window.Script90 = function()
 {
   const target = object('6YtcvhMWYs8');
 const duration = 1500;
@@ -2292,7 +2318,7 @@ target.animate(
 );
 }
 
-window.Script90 = function()
+window.Script91 = function()
 {
   player.once(() => {
 const target = object('5z3FPSoiqXD');
@@ -2315,7 +2341,7 @@ target.animate(
 });
 }
 
-window.Script91 = function()
+window.Script92 = function()
 {
   const target = object('5wR1MnIcXt2');
 const duration = 750;
@@ -2337,7 +2363,7 @@ target.animate(
 );
 }
 
-window.Script92 = function()
+window.Script93 = function()
 {
   player.once(() => {
 const target = object('60ak6f8rw94');
@@ -2360,7 +2386,7 @@ target.animate(
 });
 }
 
-window.Script93 = function()
+window.Script94 = function()
 {
   player.once(() => {
 const target = object('5sEmw8bCArL');
@@ -2383,7 +2409,7 @@ target.animate(
 });
 }
 
-window.Script94 = function()
+window.Script95 = function()
 {
   player.once(() => {
 const target = object('6XgeS6RjmMG');
