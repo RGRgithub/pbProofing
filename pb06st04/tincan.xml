@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tincan xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://projecttincan.com/tincan.xsd">
+	<activities>
+		<activity id="urn:articulate:storyline:6Dzw82BiGx0" type="http://adlnet.gov/expapi/activities/course">
+			<name lang="und">pb06st04</name>
+			<description lang="und" />
+			<launch lang="und">index_lms.html</launch>
+		</activity>
+		<activity id="urn:articulate:storyline:6Dzw82BiGx0/67YQ8shiMSl" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Intro</name>
+			<description lang="und">Intro</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6Dzw82BiGx0/6kN3vOcB5ow" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 1_1</name>
+			<description lang="und">Question 1_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6Dzw82BiGx0/5bz4Fbn0rS7" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 2_1</name>
+			<description lang="und">Question 2_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6Dzw82BiGx0/5fNx09lBGlG" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 3_1</name>
+			<description lang="und">Question 3_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6Dzw82BiGx0/6j0Y76N86oq" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 4_1</name>
+			<description lang="und">Question 4_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6Dzw82BiGx0/6gDPQQ6hGua" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 5_1</name>
+			<description lang="und">Question 5_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6Dzw82BiGx0/5fXYz0EigeG" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Results5Alt</name>
+			<description lang="und">Results5Alt</description>
+		</activity>
+	</activities>
+</tincan>

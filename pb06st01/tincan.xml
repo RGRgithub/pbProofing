@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tincan xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://projecttincan.com/tincan.xsd">
+	<activities>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0" type="http://adlnet.gov/expapi/activities/course">
+			<name lang="und">pb06st01</name>
+			<description lang="und" />
+			<launch lang="und">index_lms.html</launch>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/5YpcHtb9ebt" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Intro</name>
+			<description lang="und">Intro</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/6ccreQCg3iG" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 1_1</name>
+			<description lang="und">Question 1_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/6kN3vOcB5ow" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 1_2</name>
+			<description lang="und">Question 1_2</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/5b74lK9rQWM" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 2_1</name>
+			<description lang="und">Question 2_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/62tNQAWVWhu" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 3_1</name>
+			<description lang="und">Question 3_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/6JXxRP0YYTm" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 3_2</name>
+			<description lang="und">Question 3_2</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/6YKQmmwOXLU" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 4_1</name>
+			<description lang="und">Question 4_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/65kEkU3YV2o" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 4_2</name>
+			<description lang="und">Question 4_2</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/5fVMkYaQabB" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 5_1</name>
+			<description lang="und">Question 5_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/6HM8JQyUj4Y" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 6_1</name>
+			<description lang="und">Question 6_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/6o9NZA4B2Zr" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 6_2</name>
+			<description lang="und">Question 6_2</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/6fDgb7iYIpf" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 7_1</name>
+			<description lang="und">Question 7_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/6It3KfkAfbg" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 7_2</name>
+			<description lang="und">Question 7_2</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/6MCQGmIOh3p" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Question 8_1</name>
+			<description lang="und">Question 8_1</description>
+		</activity>
+		<activity id="urn:articulate:storyline:6ob3j8C9ng0/6Hg7j6qoqfz" type="http://adlnet.gov/expapi/activities/module">
+			<name lang="und">Results13</name>
+			<description lang="und">Results13</description>
+		</activity>
+	</activities>
+</tincan>
