@@ -1594,6 +1594,11 @@
             <slidelink slideid="_player.6ftASoEQRIc.6PRSpkiasqN" displaytext="Results5" expand="false" type="slide" />
           </links>
         </slidelink>
+        <slidelink slideid="_player.5VqcXAqGGCd" displaytext="Playbook" expand="true" type="slide">
+          <links>
+            <slidelink slideid="_player.5VqcXAqGGCd.6mbPivFw9Tt" displaytext="Results10" expand="false" type="slide" />
+          </links>
+        </slidelink>
       </links>
     </outline>
   </nav_data>

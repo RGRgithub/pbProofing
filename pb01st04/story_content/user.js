@@ -18,4 +18,9 @@ window.Script25 = function()
   window.parent?.postMessage({ action: "activity_completed"}, '*');
 }
 
+window.Script26 = function()
+{
+  window.parent?.postMessage({ action: "activity_completed"}, '*');
+}
+
 };

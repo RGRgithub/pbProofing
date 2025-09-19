@@ -2,80 +2,83 @@ function ExecuteScript(strId)
 {
   switch (strId)
   {
-      case "6ILQrjpF8ql":
+      case "5ibib2kw5Q0":
         Script1();
         break;
-      case "5kNY9fKBiG3":
+      case "60rLtOgKkca":
         Script2();
         break;
-      case "697cjyzmYZG":
+      case "6nsfoVKVXYL":
         Script3();
         break;
-      case "6ceTTJo854V":
+      case "6kAeLZuHOmM":
         Script4();
         break;
-      case "5uqqRVUEv2S":
+      case "6p97k9RbrpA":
         Script5();
         break;
-      case "5gg0h2hlx3G":
+      case "6eM1LpltCZv":
         Script6();
         break;
-      case "69aJiAEKrjT":
+      case "6iZ7iF0ZPqF":
         Script7();
         break;
-      case "5iclNsy2Hmy":
+      case "5njwffUEVK1":
         Script8();
         break;
-      case "6S95nqtMHVJ":
+      case "6GRkuROGCHT":
         Script9();
         break;
-      case "5iZ9n6vuE0D":
+      case "6ds954FG5Ao":
         Script10();
         break;
-      case "5c67czXAry7":
+      case "6moz9jsOObd":
         Script11();
         break;
-      case "5kM1OdNwovm":
+      case "5a8KYyVa7KF":
         Script12();
         break;
-      case "5Z9sF6ux6Go":
+      case "6Ebg45pNSEL":
         Script13();
         break;
-      case "60tAfZ9Fmih":
+      case "5xecGCm1O8e":
         Script14();
         break;
-      case "6LfsPQQQFeE":
+      case "6Xt9Hlwd1BT":
         Script15();
         break;
-      case "6AYRPgSgx4A":
+      case "6bdlSqd8dcI":
         Script16();
         break;
-      case "5xZ0p63lNB3":
+      case "6pzuvMLASSh":
         Script17();
         break;
-      case "5c9X8PIXAEU":
+      case "5bKviiNljzg":
         Script18();
         break;
-      case "6EzAqR8zLuD":
+      case "6YIaVa3qlFJ":
         Script19();
         break;
-      case "6VA7Wwv1yyV":
+      case "5sGiMMSPZEJ":
         Script20();
         break;
-      case "6YBDNcdw5ef":
+      case "5hakrNObXYz":
         Script21();
         break;
-      case "6VayOlF6deJ":
+      case "6bxKHDkCr1S":
         Script22();
         break;
-      case "60LlQno8Oaj":
+      case "6ldaG9cJ7d5":
         Script23();
         break;
-      case "6cA9IM1wIHP":
+      case "6d1pLzH1G5f":
         Script24();
         break;
-      case "6eSIfwDNyLG":
+      case "6pqKJ6VDOxM":
         Script25();
+        break;
+      case "5uclKcV2ehl":
+        Script26();
         break;
   }
 }
@@ -637,3 +640,10 @@ target.animate(
 }
 
 };
+function getActor() {
+  return {
+    "mbox": "mailto:mark.snyder@reallygreatreading.com",
+    "objectType": "Agent",
+    "name": "Playbooks Example"
+  };
+}
