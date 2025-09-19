@@ -6,10 +6,6 @@
 			<description lang="und" />
 			<launch lang="und">index_lms.html</launch>
 		</activity>
-		<activity id="urn:articulate:storyline:60hCSyDA4YC/5XLfRs6SOQJ" type="http://adlnet.gov/expapi/activities/objective">
-			<name lang="und">pb01st01</name>
-			<description lang="und">pb01st01</description>
-		</activity>
 		<activity id="urn:articulate:storyline:60hCSyDA4YC/6pQRVgtm2RG" type="http://adlnet.gov/expapi/activities/module">
 			<name lang="und">Intro</name>
 			<description lang="und">Intro</description>
@@ -49,10 +45,6 @@
 		<activity id="urn:articulate:storyline:60hCSyDA4YC/5wRDQkNUfL8" type="http://adlnet.gov/expapi/activities/module">
 			<name lang="und">Results8</name>
 			<description lang="und">Results8</description>
-		</activity>
-		<activity id="urn:articulate:storyline:60hCSyDA4YC/66sjyrmUFHr" type="http://adlnet.gov/expapi/activities/module">
-			<name lang="und">Quiz Results</name>
-			<description lang="und">Quiz Results</description>
 		</activity>
 	</activities>
 </tincan>
