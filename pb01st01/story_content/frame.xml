@@ -35,7 +35,7 @@
           </optionlist>
           <option name="time_enabled" value="false">
             <options>
-              <option name="time_format" value="none" />
+              <option name="time_format" value="" />
             </options>
           </option>
           <option name="video_enabled" value="false">
@@ -1585,6 +1585,7 @@
       <links>
         <slidelink slideid="_player.6ftASoEQRIc" displaytext="Playbook" expand="true" type="slide">
           <links>
+            <slidelink slideid="_player.6ftASoEQRIc.5uCDpzbLox5" displaytext="Untitled Slide" expand="false" type="slide" />
             <slidelink slideid="_player.6ftASoEQRIc.6pQRVgtm2RG" displaytext="Intro" expand="false" type="slide" />
             <slidelink slideid="_player.6ftASoEQRIc.6ccreQCg3iG" displaytext="Question 1_1" expand="false" type="slide" />
             <slidelink slideid="_player.6ftASoEQRIc.6kN3vOcB5ow" displaytext="Question 1_2" expand="false" type="slide" />
@@ -1597,7 +1598,6 @@
             <slidelink slideid="_player.6ftASoEQRIc.5wRDQkNUfL8" displaytext="Results8" expand="false" type="slide" />
           </links>
         </slidelink>
-        <slidelink slideid="" emptySceneId="_player.6VoV5WJRHl3" displaytext="Playbook" expand="true" type="slide" />
       </links>
     </outline>
   </nav_data>
