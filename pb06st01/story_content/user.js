@@ -13,7 +13,7 @@ var showPointer = player.showPointer;
 var hidePointer = player.hidePointer;
 var slideWidth = player.slideWidth;
 var slideHeight = player.slideHeight;
-window.Script73 = function()
+window.Script72 = function()
 {
   window.parent?.postMessage({ action: "activity_completed"}, '*');
 }
