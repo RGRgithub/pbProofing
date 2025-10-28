@@ -1,0 +1,441 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD040 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .icApple {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icApple.svg');
+        }
+
+        .icBear {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icBear.svg');
+        }
+
+        .icCat {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icCat.svg');
+        }
+
+        .icDuck {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icDuck.svg');
+        }
+
+        .icEdge {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icEdge.svg');
+        }
+
+        .icFish {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icFish.svg');
+        }
+
+        .icGoat {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icGoat.svg');
+        }
+
+        .icHammer {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icHammer.svg');
+        }
+
+        .icItch {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icItch.svg');
+        }
+
+        .icJump {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icJump.svg');
+        }
+
+        .icKey {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icKey.svg');
+        }
+
+        .icLion {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icLion.svg');
+        }
+
+        .icMix {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icMix.svg');
+        }
+
+        .icMonkey {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icMonkey.svg');
+        }
+
+        .icNest {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icNest.svg');
+        }
+
+        .icOctopus {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icOctopus.svg');
+        }
+
+        .icPopcorn {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icPopcorn.svg');
+        }
+
+        .icQueen {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icQueen.svg');
+        }
+
+        .icRabbit {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icRabbit.svg');
+        }
+
+        .icSoap {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icSoap.svg');
+        }
+
+        .icToothbrush {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icToothbrush.svg');
+        }
+
+        .icUp {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icUp.svg');
+        }
+
+        .icViolin {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icViolin.svg');
+        }
+
+        .icWaveHand {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icWaveHand.svg');
+        }
+
+        .icYes {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icYes.svg');
+        }
+
+        .icZipper {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icZipper.svg');
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD040" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD040",
+        "title": "Letter-Sound Review",
+        "dataSet": [
+            {
+                "letter": "a",
+                "icon": "icApple"
+            },
+            {
+                "letter": "b",
+                "icon": "icBear"
+            },
+            {
+                "letter": "c",
+                "icon": "icCat"
+            },
+            {
+                "letter": "d",
+                "icon": "icDuck"
+            },
+            {
+                "letter": "e",
+                "icon": "icEdge"
+            },
+            {
+                "letter": "f",
+                "icon": "icFish"
+            },
+            {
+                "letter": "g",
+                "icon": "icGoat"
+            },
+            {
+                "letter": "h",
+                "icon": "icHammer"
+            },
+            {
+                "letter": "i",
+                "icon": "icItch"
+            },
+            {
+                "letter": "j",
+                "icon": "icJump"
+            },
+            {
+                "letter": "k",
+                "icon": "icKey"
+            },
+            {
+                "letter": "l",
+                "icon": "icLion"
+            },
+            {
+                "letter": "m",
+                "icon": "icMonkey"
+            },
+            {
+                "letter": "n",
+                "icon": "icNest"
+            },
+            {
+                "letter": "o",
+                "icon": "icOctopus"
+            },
+            {
+                "letter": "p",
+                "icon": "icPopcorn"
+            },
+            {
+                "letter": "qu",
+                "icon": "icQueen"
+            },
+            {
+                "letter": "r",
+                "icon": "icRabbit"
+            },
+            {
+                "letter": "s",
+                "icon": "icSoap"
+            },
+            {
+                "letter": "t",
+                "icon": "icToothbrush"
+            },
+            {
+                "letter": "u",
+                "icon": "icUp"
+            },
+            {
+                "letter": "v",
+                "icon": "icViolin"
+            },
+            {
+                "letter": "w",
+                "icon": "icWaveHand"
+            },
+            {
+                "letter": "x",
+                "icon": "icMix"
+            },
+            {
+                "letter": "y",
+                "icon": "icYes"
+            },
+            {
+                "letter": "z",
+                "icon": "icZipper"
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD040();
+        }
+
+        function CD040() {
+    $('#CD040').html('');
+    $('#CD040').hide();
+    var htmlString = '';
+
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+        htmlString += '<div class="iconTileContainer">';
+        htmlString += '<div id="CD040LetterTile' + (i + 1) + '" class="letterTileBack"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[i].letter) + '</div></div>';
+        htmlString += '<div id="CD040image' + (i + 1) + '" class="standardIcon hiddenIcon ' + exerciseData.exercises[pageNum - 1].dataSet[i].icon + '"></div>';
+        htmlString += '</div>';
+        if (i == 5 || i == 11 || i == 18 || i == 25) {
+            htmlString += '<br />';
+        }
+    }
+
+    $('#CD040').html(htmlString);
+    var iconNum = exerciseData.exercises[pageNum - 1].dataSet.length;
+
+    if (iconNum < 7) {
+        $('#CD040 .iconTileContainer').css('font-size', '1.2em');
+    }
+
+    if (iconNum >= 7 && iconNum < 13) {
+        $('#CD040 .iconTileContainer').css('font-size', '1.2em');
+    }
+    if (iconNum >= 13 && iconNum < 20) {
+        $('#CD040 .iconTileContainer').css('font-size', '1em');
+    }
+    if (iconNum >= 20 && iconNum < 27) {
+        $('#CD040 .iconTileContainer').css('font-size', '.8em');
+    }
+    if (iconNum >= 27) {
+        $('#CD040 .iconTileContainer').css('font-size', '.6em');
+    }
+
+
+
+    $('#CD040').unbind();
+    $('#CD040').bind(clicker, function () {
+        CD040Play();
+    });
+    initPage();
+}
+
+        function CD040Play() {
+    step++;
+    if (step <= exerciseData.exercises[pageNum - 1].dataSet.length) {
+        $('#CD040image' + step).css('transition', 'all .5s 0s');
+        $('#CD040image' + step).removeClass('hiddenIcon');
+    } else {
+        nextPage();
+    }
+}
+
+        $(document).ready(function() {
+            CD040();
+        });
+    </script>
+</body>
+</html>

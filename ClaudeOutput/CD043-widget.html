@@ -1,0 +1,358 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD043 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD043" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD043",
+        "title": "I DO: Finger-Stretching",
+        "dataSet": [
+            {
+                "posters": [
+                    "Short_Vowels_Poster.png",
+                    "Long_Vowels_Poster.png"
+                ],
+                "iconFirst": "false",
+                "icons": [
+                    "icCake"
+                ]
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD043();
+        }
+
+        function CD043() {
+
+    $('#CD043').css('padding-left', '0');
+    $('#CD043').css('padding-right', '0');
+    $('#CD043').css('padding-top', '2em');
+
+    var htmlString = '';
+
+    if (exerciseData.exercises[pageNum - 1].dataSet[0].posters.length > 1) {
+
+        htmlString += '<img id="CD043Image1" class="imageLarge';
+        if (exerciseData.exercises[pageNum - 1].dataSet[0].iconFirst == 'true') {
+            htmlString += ' hiddenImage';
+        }
+        htmlString += '" src="img/' + exerciseData.exercises[pageNum - 1].dataSet[0].posters[0] + '" />';
+
+        htmlString += '<div id="CD043icon" class="standardIcon blockIcon';
+        if (exerciseData.exercises[pageNum - 1].dataSet[0].iconFirst == 'false') {
+            htmlString += ' hiddenIcon';
+        }
+        htmlString += ' ' + exerciseData.exercises[pageNum - 1].dataSet[0].icons[0] + '"></div>';
+
+        htmlString += '<img id="CD043Image2" class="imageLarge';
+        if (exerciseData.exercises[pageNum - 1].dataSet[0].iconFirst == 'true') {
+            htmlString += ' hiddenImage';
+        }
+        htmlString += '" src="img/' + exerciseData.exercises[pageNum - 1].dataSet[0].posters[1] + '" />';
+
+    } else {
+
+        htmlString += '<div id="CD043icon" class="standardIcon blockIcon'
+        if (exerciseData.exercises[pageNum - 1].dataSet[0].iconFirst == 'false') {
+            htmlString += ' hiddenIcon';
+        }
+        htmlString += ' ' + exerciseData.exercises[pageNum - 1].dataSet[0].icons[0] + '"></div>';
+
+
+        htmlString += '<img id="CD043Image1" class="imageLarge'
+        if (exerciseData.exercises[pageNum - 1].dataSet[0].iconFirst == 'true') {
+            htmlString += ' hiddenImage';
+        }
+        htmlString += '" src="img/' + exerciseData.exercises[pageNum - 1].dataSet[0].posters[0] + '" />';
+    }
+
+
+    $('#CD043').html(htmlString);
+
+    if (exerciseData.exercises[pageNum - 1].dataSet[0].posters.length > 1) {
+        $('#CD043 .blockIcon').css('font-size', '2em');
+        $('#CD043 .imageLarge').css('height', '23em');
+        $('#CD043 .imageLarge').css('padding-bottom', '2em');
+        $('#CD043').css('padding-top', '6em');
+    } else {
+        $('#CD043 .blockIcon').css('font-size', '2.5em');
+        $('#CD043 .imageLarge').css('height', '31em');
+        $('#CD043 .imageLarge').css('padding-bottom', '2em');
+        $('#CD043 .imageLarge').css('padding-right', '2em');
+        $('#CD043').css('padding-top', '2em');
+    }
+
+    $('#CD043').unbind();
+    $('#CD043').bind(clicker, function () {
+        CD043Play();
+    });
+    initPage();
+}
+
+        function CD043Play() {
+    step++;
+    if (step == 1) {
+        step++;
+    }
+    var clickArray = [];
+    var total = 0;
+    var subClicks = 0;
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+        subClicks = exerciseData.exercises[pageNum - 1].dataSet[i].icons.length + 1;
+        total += subClicks;
+        clickArray.push({
+            'total': total,
+            'subClicks': subClicks
+        });
+    }
+    console.log(clickArray);
+    if (step > clickArray[clickArray.length - 1].total) {
+        nextPage();
+    } else {
+        var ds = 0;
+        while (step > clickArray[ds].total) {
+            ds++;
+        }
+        console.log('ds:' + ds);
+
+        var subStep = clickArray[ds].subClicks - (clickArray[ds].total - step);
+
+        console.log('subStep:' + subStep);
+        var htmlString = '';
+        if (subStep == 1) {
+            if (exerciseData.exercises[pageNum - 1].dataSet[ds].posters.length > 1) {
+
+                htmlString += '<img id="CD043Image1" class="imageLarge';
+                if (exerciseData.exercises[pageNum - 1].dataSet[ds].iconFirst == 'true') {
+                    htmlString += ' hiddenImage';
+                }
+                htmlString += '" src="img/' + exerciseData.exercises[pageNum - 1].dataSet[ds].posters[0] + '" />';
+
+                htmlString += '<div id="CD043icon" class="standardIcon blockIcon';
+                if (exerciseData.exercises[pageNum - 1].dataSet[ds].iconFirst == 'false') {
+                    htmlString += ' hiddenIcon';
+                }
+                htmlString += ' ' + exerciseData.exercises[pageNum - 1].dataSet[ds].icons[0] + '"></div>';
+
+                htmlString += '<img id="CD043Image2" class="imageLarge';
+                if (exerciseData.exercises[pageNum - 1].dataSet[ds].iconFirst == 'true') {
+                    htmlString += ' hiddenImage';
+                }
+                htmlString += '" src="img/' + exerciseData.exercises[pageNum - 1].dataSet[ds].posters[1] + '" />';
+
+            } else {
+
+                htmlString += '<div id="CD043icon" class="standardIcon blockIcon'
+                if (exerciseData.exercises[pageNum - 1].dataSet[ds].iconFirst == 'false') {
+                    htmlString += ' hiddenIcon';
+                }
+                htmlString += ' ' + exerciseData.exercises[pageNum - 1].dataSet[ds].icons[0] + '"></div>';
+
+
+                htmlString += '<img id="CD043Image1" class="imageLarge'
+                if (exerciseData.exercises[pageNum - 1].dataSet[ds].iconFirst == 'true') {
+                    htmlString += ' hiddenImage';
+                }
+                htmlString += '" src="img/' + exerciseData.exercises[pageNum - 1].dataSet[ds].posters[0] + '" />';
+            }
+
+            $('#CD043').html(htmlString);
+
+            if (exerciseData.exercises[pageNum - 1].dataSet[ds].posters.length > 1) {
+                $('#CD043 .blockIcon').css('font-size', '2em');
+                $('#CD043 .imageLarge').css('height', '23em');
+                $('#CD043 .imageLarge').css('padding-bottom', '2em');
+                $('#CD043').css('padding-top', '6em');
+            } else {
+                $('#CD043 .blockIcon').css('font-size', '2.5em');
+                $('#CD043 .imageLarge').css('height', '31em');
+                $('#CD043 .imageLarge').css('padding-bottom', '2em');
+                $('#CD043 .imageLarge').css('padding-right', '2em');
+                $('#CD043').css('padding-top', '2em');
+            }
+
+
+            $('#CD043').unbind();
+            $('#CD043').bind(clicker, function () {
+                CD043Play();
+            });
+        } else {
+            $('#CD043icon').removeClass('hiddenIcon');
+            $('#CD043Image1').removeClass('hiddenImage');
+            $('#CD043Image2').removeClass('hiddenImage');
+            var newClass = 'standardIcon blockIcon ' + exerciseData.exercises[pageNum - 1].dataSet[ds].icons[subStep - 2];
+            $('#CD043icon').attr('class', newClass);
+        }
+
+
+
+    }
+
+}
+
+        $(document).ready(function() {
+            CD043();
+        });
+    </script>
+</body>
+</html>

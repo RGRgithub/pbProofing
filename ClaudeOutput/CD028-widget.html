@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD028 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD028" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD028",
+        "title": "Template CD028",
+        "dataSet": []
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD028();
+        }
+
+        function CD028() {
+
+    var htmlString = '';
+    htmlString += '<div id="CD028imageBlock" class="fullScreen"><div id="CD028image" class="standardIcon fullScreenIcon ' + exerciseData.exercises[pageNum - 1].dataSet[0].largeIcon + '"></div></div>';
+
+    //add blocks
+    htmlString += '<div id="CD028colorBlockPanel" class="colorBlockPanel">';
+    htmlString += '<div id="CD028colorBlock1" class="colorBlock smallBlock block' + exerciseData.exercises[pageNum - 1].dataSet[0].smallBlock + '"></div>';
+    htmlString += '<div id="CD028colorBlock2" class="colorBlock largeBlock block' + exerciseData.exercises[pageNum - 1].dataSet[0].largeBlock + '"></div>';
+    htmlString += '</div>';
+
+    $('#CD028').html(htmlString);
+    $('#CD028colorBlockPanel').hide();
+    $('#CD028 .fullScreen').hide();
+    $('#CD028imageBlock').fadeIn(250);
+    $('#CD028').unbind();
+    $('#CD028').bind(clicker, function () {
+        CD028Play();
+    });
+    initPage();
+}
+
+        function CD028Play() {
+    var clickArray = [];
+    var totalClicks = 0;
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+        totalClicks += 2;
+        for (j = 0; j < exerciseData.exercises[pageNum - 1].dataSet[i].subSteps.length; j++) {
+            totalClicks += 2;
+        }
+        clickArray.push(totalClicks);
+    }
+
+    step++;
+    if (step > clickArray[clickArray.length - 1] - 1) {
+        $('#CD028').unbind();
+        nextPage();
+    } else {
+
+        //find current dataset
+        var dataset = 0;
+        while (step > clickArray[dataset]) {
+            dataset++;
+        }
+        var subStep;
+        if (dataset == 0) {
+            subStep = step;
+        } else {
+            subStep = step - clickArray[dataset - 1];
+        }
+        $('#CD028colorBlock1').css('transition', 'all .5s 0s');
+        if (step == clickArray[dataset]) {
+            $('#CD028imageBlock').fadeIn(250);
+            $('#CD028colorBlockPanel').fadeOut(250);
+            $('#CD028colorBlockPanel').html('<div id="CD028colorBlock1" class="colorBlock smallBlock block' + exerciseData.exercises[pageNum - 1].dataSet[dataset].smallBlock + '"></div><div id="CD028colorBlock2" class="colorBlock largeBlock block' + exerciseData.exercises[pageNum - 1].dataSet[dataset].largeBlock + '"></div>');
+        } else {
+            $('#CD028imageBlock').fadeOut(250);
+
+            $('#CD028colorBlockPanel').fadeIn(250);
+
+            if (subStep % 2 == 0) {
+                //$('#CD028colorBlock1').css('background-color','green');
+                $('#CD028colorBlockPanel').html('<div id="CD028colorBlock1" class="colorBlock smallBlock"></div><div id="CD028colorBlock2" class="colorBlock largeBlock block' + exerciseData.exercises[pageNum - 1].dataSet[dataset].largeBlock + '"></div>');
+                $('#CD028colorBlock1').addClass('block' + exerciseData.exercises[pageNum - 1].dataSet[dataset].subSteps[(subStep / 2) - 1].subBlock);
+                //$('#CD028colorBlock1').css('background-image','none');
+            } else {
+                if (subStep > 1) {
+                    var subIconIndex = (subStep - 1) / 2;
+                    //alert(exerciseData.exercises[pageNum - 1].dataSet[dataset].subSteps[subIconIndex].subIcon);
+                    $('#CD028colorBlock1').addClass(exerciseData.exercises[pageNum - 1].dataSet[dataset].subSteps[subIconIndex - 1].subIcon);
+                }
+            }
+        }
+
+
+    }
+}
+
+        $(document).ready(function() {
+            CD028();
+        });
+    </script>
+</body>
+</html>

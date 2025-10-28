@@ -1,0 +1,401 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD005 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .icApron {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icApron.svg');
+        }
+
+        .icCheese {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icCheese.svg');
+        }
+
+        .icGlasses {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icGlasses.svg');
+        }
+
+        .icGumballs {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icGumballs.svg');
+        }
+
+        .icJellybeans {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icJellybeans.svg');
+        }
+
+        .icMittens {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icMittens.svg');
+        }
+
+        .icPeas {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icPeas.svg');
+        }
+
+        .icShirt {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icShirt.svg');
+        }
+
+        .icShoe {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icShoe.svg');
+        }
+
+        .icTie {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icTie.svg');
+        }
+
+        .icToast {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icToast.svg');
+        }
+
+        .icWatermelon {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icWatermelon.svg');
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD005" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD005",
+        "title": "Concept Sort - Sort 1",
+        "colHead": [
+            [
+                {
+                    "type": "icon",
+                    "name": "icApple"
+                }
+            ],
+            [
+                {
+                    "type": "icon",
+                    "name": "icGloves"
+                }
+            ]
+        ],
+        "dataSet": [
+            {
+                "icon": "icWatermelon",
+                "col": "1"
+            },
+            {
+                "icon": "icShirt",
+                "col": "2"
+            },
+            {
+                "icon": "icTie",
+                "col": "2"
+            },
+            {
+                "icon": "icJellybeans",
+                "col": "1"
+            },
+            {
+                "icon": "icGlasses",
+                "col": "2"
+            },
+            {
+                "icon": "icCheese",
+                "col": "1"
+            },
+            {
+                "icon": "icToast",
+                "col": "1"
+            },
+            {
+                "icon": "icMittens",
+                "col": "2"
+            },
+            {
+                "icon": "icGumballs",
+                "col": "1"
+            },
+            {
+                "icon": "icShoe",
+                "col": "2"
+            },
+            {
+                "icon": "icApron",
+                "col": "2"
+            },
+            {
+                "icon": "icPeas",
+                "col": "1"
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+        var CD005IconSize;
+        var CD005colWidthEms;
+        var CD005IconArray = [];
+        var CD005Click;
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD005();
+        }
+
+        function CD005() {
+    CD005Click = true;
+    CD005IconArray = [];
+    $('#CD005').css('padding-left', '0');
+    $('#CD005').css('padding-right', '0');
+    var colWidth = 100 / exerciseData.exercises[pageNum - 1].colHead.length;
+    CD005colWidthEms = ($('#CD005').width() / parseFloat($('#CD005').css('font-size'))) / exerciseData.exercises[pageNum - 1].colHead.length;
+    var colHeightEms = $('#CD005').height() / parseFloat($('#CD005').css('font-size'));
+    CD005IconSize = colHeightEms * .18;
+
+    var htmlString = '';
+
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].colHead.length; i++) {
+        CD005IconArray.push(0);
+        htmlString += '<div id="CD005Col' + (i + 1) + '" class="sortColumnBlock">';
+        for (j = 0; j < exerciseData.exercises[pageNum - 1].colHead[i].length; j++) {
+            if (exerciseData.exercises[pageNum - 1].colHead[i][j].type == 'icon') {
+                htmlString += '<div id="CD005IconHead' + (i + 1) + '" class="standardIcon headIcon ' + exerciseData.exercises[pageNum - 1].colHead[i][j].name + '"></div>';
+            }
+            if (exerciseData.exercises[pageNum - 1].colHead[i][j].type == 'colorTile') {
+                //htmlString += '<div id="CD005TileHead' + (i + 1) + '" class="headTile ' + exerciseData.exercises[pageNum - 1].colHead[i][j].color + '"></div>';
+                htmlString += '<div id="CD005TileHead' + (i + 1) + '" class="letterTileBack"><div class="letterTile letterTileHead ';
+                htmlString += 'letterTile' + exerciseData.exercises[pageNum - 1].colHead[i][j].color + '"></div></div>';
+            }
+
+            if (exerciseData.exercises[pageNum - 1].colHead[i][j].type == 'letterTile') {
+                htmlString += '<div id="CD005LetterTileHead' + (i + 1) + '" class="letterTileBack letterTileBackHead"><div class="letterTile letterTileHead">' + checkLetter(exerciseData.exercises[pageNum - 1].colHead[i][j].letter) + '</div></div>';
+            }
+
+        }
+
+
+        htmlString += '</div>';
+    }
+    htmlString += '<div id="CD005IconBlock" class="fullScreen">';
+
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+        htmlString += '<div id="CD005image' + i + '" class="standardIcon sortIcon ' + exerciseData.exercises[pageNum - 1].dataSet[i].icon + '"></div>';
+    }
+    htmlString += '</div>';
+
+    $('#CD005').html(htmlString);
+    $('#CD005 .letterTileBack').css('font-size', '1.25em');
+    $('#CD005 .letterTileBack').css('margin-right', '.5em');
+
+    $('#CD005 .sortColumnBlock').css('width', CD005colWidthEms + 'em');
+    $('#CD005 .sortColumnBlock').css('height', (colHeightEms - CD005IconSize * 1.2) + 'em');
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+        $('#CD005image' + i).css('height', CD005IconSize + 'em');
+        $('#CD005image' + i).css('width', CD005IconSize + 'em');
+        var centerIcon = ($('#CD005').width() / parseFloat($('#CD005').css('font-size'))) / 2 - (CD005IconSize * .5);
+
+        $('#CD005image' + i).css('left', centerIcon + 'em');
+        $('#CD005image' + i).css('bottom', '0 em');
+    }
+    $('.sortIcon').css('display', 'none');
+    $('#CD005').unbind();
+    $('#CD005').bind(clicker, function () {
+        if (CD005Click) {
+            CD005Play();
+        }
+    });
+    initPage();
+}
+
+        function CD005Play() {
+    step++;
+    if (step > exerciseData.exercises[pageNum - 1].dataSet.length * 2) {
+        nextPage();
+    } else {
+
+        if (step % 2 == 1) {
+            var iconNum = (step - 1) / 2;
+            CD005Click = false;
+            $('#CD005image' + iconNum).fadeIn(500);
+            CD005Click = true;
+        } else {
+            var iconNum = (step / 2) - 1;
+            CD005Click = false;
+            var vPosition = CD005IconArray[exerciseData.exercises[pageNum - 1].dataSet[iconNum].col - 1];
+            var row = Math.floor(vPosition / 2);
+            var newTop = (CD005IconSize * 1.1) * row + 11;
+            var newLeft = CD005colWidthEms * (exerciseData.exercises[pageNum - 1].dataSet[iconNum].col - 1) + CD005colWidthEms / 2 - CD005IconSize / 2;
+            if (vPosition % 2 == 0) {
+                newLeft -= CD005IconSize / 1.5;
+            } else {
+                newLeft += CD005IconSize / 1.5;
+            }
+            if (exerciseData.exercises[pageNum - 1].dataSet[iconNum].col == 1) {
+                newLeft += 3.25;
+            } else {
+                newLeft -= 3.25;
+            }
+            $('#CD005image' + (iconNum)).animate({
+                'top': newTop + 'em',
+                'left': newLeft + 'em'
+            }, 1000, function () {
+                CD005Click = true;
+            });
+
+            //add item to array
+            CD005IconArray[exerciseData.exercises[pageNum - 1].dataSet[iconNum].col - 1]++;
+        }
+
+    }
+
+}
+
+        $(document).ready(function() {
+            CD005();
+        });
+    </script>
+</body>
+</html>

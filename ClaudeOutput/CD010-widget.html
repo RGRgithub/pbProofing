@@ -1,0 +1,464 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD010 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .icAlligator {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icAlligator.svg');
+        }
+
+        .icAnt {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icAnt.svg');
+        }
+
+        .icAstronaut {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icAstronaut.svg');
+        }
+
+        .icCot {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icCot.svg');
+        }
+
+        .icCupcake {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icCupcake.svg');
+        }
+
+        .icHamburger {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icHamburger.svg');
+        }
+
+        .icHouse {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icHouse.svg');
+        }
+
+        .icIgloo {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icIgloo.svg');
+        }
+
+        .icInch {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icInch.svg');
+        }
+
+        .icMad {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icMad.svg');
+        }
+
+        .icMonster {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icMonster.svg');
+        }
+
+        .icPepperRed {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icPepperRed.svg');
+        }
+
+        .icPizzaWhole {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icPizzaWhole.svg');
+        }
+
+        .icSalad {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icSalad.svg');
+        }
+
+        .icSix {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icSix.svg');
+        }
+
+        .icSunflower {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icSunflower.svg');
+        }
+
+        .icTeeth {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icTeeth.svg');
+        }
+
+        .icToaster {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icToaster.svg');
+        }
+
+        .icTowel {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icTowel.svg');
+        }
+
+        .icTurtle {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icTurtle.svg');
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD010" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD010",
+        "title": "Which One? 14.1",
+        "dataSet": [
+            {
+                "icon": "icMad",
+                "letter1": "s",
+                "letter2": "m",
+                "letter3": "t",
+                "correct": "2"
+            },
+            {
+                "icon": "icPizzaWhole",
+                "letter1": "p",
+                "letter2": "m",
+                "letter3": "t",
+                "correct": "1"
+            },
+            {
+                "icon": "icInch",
+                "letter1": "n",
+                "letter2": "i",
+                "letter3": "f",
+                "correct": "2"
+            },
+            {
+                "icon": "icAnt",
+                "letter1": "i",
+                "letter2": "a",
+                "letter3": "c",
+                "correct": "2"
+            },
+            {
+                "icon": "icTurtle",
+                "letter1": "t",
+                "letter2": "h",
+                "letter3": "m",
+                "correct": "1"
+            },
+            {
+                "icon": "icHamburger",
+                "letter1": "t",
+                "letter2": "p",
+                "letter3": "h",
+                "correct": "3"
+            },
+            {
+                "icon": "icToaster",
+                "letter1": "t",
+                "letter2": "l",
+                "letter3": "d",
+                "correct": "1"
+            },
+            {
+                "icon": "icAlligator",
+                "letter1": "u",
+                "letter2": "k",
+                "letter3": "a",
+                "correct": "3"
+            },
+            {
+                "icon": "icCupcake",
+                "letter1": "p",
+                "letter2": "c",
+                "letter3": "h",
+                "correct": "2"
+            },
+            {
+                "icon": "icSunflower",
+                "letter1": "m",
+                "letter2": "t",
+                "letter3": "s",
+                "correct": "3"
+            },
+            {
+                "icon": "icHouse",
+                "letter1": "h",
+                "letter2": "p",
+                "letter3": "s",
+                "correct": "1"
+            },
+            {
+                "icon": "icCot",
+                "letter1": "p",
+                "letter2": "c",
+                "letter3": "h",
+                "correct": "2"
+            },
+            {
+                "icon": "icIgloo",
+                "letter1": "t",
+                "letter2": "i",
+                "letter3": "a",
+                "correct": "2"
+            },
+            {
+                "icon": "icSix",
+                "letter1": "p",
+                "letter2": "m",
+                "letter3": "s",
+                "correct": "3"
+            },
+            {
+                "icon": "icMonster",
+                "letter1": "m",
+                "letter2": "s",
+                "letter3": "c",
+                "correct": "1"
+            },
+            {
+                "icon": "icTeeth",
+                "letter1": "m",
+                "letter2": "t",
+                "letter3": "h",
+                "correct": "2"
+            },
+            {
+                "icon": "icSalad",
+                "letter1": "h",
+                "letter2": "m",
+                "letter3": "s",
+                "correct": "3"
+            },
+            {
+                "icon": "icPepperRed",
+                "letter1": "i",
+                "letter2": "p",
+                "letter3": "a",
+                "correct": "2"
+            },
+            {
+                "icon": "icTowel",
+                "letter1": "t",
+                "letter2": "s",
+                "letter3": "m",
+                "correct": "1"
+            },
+            {
+                "icon": "icAstronaut",
+                "letter1": "c",
+                "letter2": "o",
+                "letter3": "a",
+                "correct": "3"
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD010();
+        }
+
+        function CD010() {
+    var htmlString = '';
+    htmlString += '<div id="CD010image" class="blockIcon ' + exerciseData.exercises[pageNum - 1].dataSet[0].icon + '"></div><br />';
+    htmlString += '<div id="CD010LetterTile1" class="letterTileBack"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[0].letter1) + '</div></div>';
+    htmlString += '<div id="CD010LetterTile2" class="letterTileBack"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[0].letter2) + '</div></div>';
+    htmlString += '<div id="CD010LetterTile3" class="letterTileBack"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[0].letter3) + '</div></div>';
+
+    $('#CD010').html(htmlString);
+    $('#CD010 .letterTileBack').css('display', 'none');
+    $('#CD010 .letterTileBack').css('text-align', 'center');
+    $('#CD010 .letterTileBack').css('font-size', '3em');
+    $('#CD010').unbind();
+    $('#CD010').bind(clicker, function () {
+        CD010Play();
+    });
+    initPage();
+}
+
+        function CD010Play() {
+    step++;
+    if (step + 1 > exerciseData.exercises[pageNum - 1].dataSet.length * 3) {
+        nextPage();
+
+    } else {
+        if (step % 3 == 0) {
+            var htmlString = '';
+            htmlString += '<div id="CD010image" class="blockIcon ' + exerciseData.exercises[pageNum - 1].dataSet[step / 3].icon + '"></div><br />';
+            htmlString += '<div id="CD010LetterTile1" class="letterTileBack"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[step / 3].letter1) + '</div></div>';
+            htmlString += '<div id="CD010LetterTile2" class="letterTileBack"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[step / 3].letter2) + '</div></div>';
+            htmlString += '<div id="CD010LetterTile3" class="letterTileBack"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[step / 3].letter3) + '</div></div>';
+
+            $('#CD010').html(htmlString);
+            $('#CD010 .letterTileBack').css('display', 'none');
+            $('#CD010 .letterTileBack').css('text-align', 'center');
+            $('#CD010 .letterTileBack').css('font-size', '3em');
+            $('#CD010').unbind();
+            $('#CD010').bind(clicker, function () {
+                CD010Play();
+            });
+        } else {
+            if (step % 3 == 1) {
+                $('#CD010 .letterTileBack').fadeIn(500);
+            } else {
+                if (exerciseData.exercises[pageNum - 1].dataSet[(step - 2) / 3].correct != 1) {
+                    $('#CD010LetterTile1').animate({
+                        'font-size': '0em'
+                    }, 500);
+                }
+                if (exerciseData.exercises[pageNum - 1].dataSet[(step - 2) / 3].correct != 2) {
+                    $('#CD010LetterTile2').animate({
+                        'font-size': '0em'
+                    }, 500);
+                }
+                if (exerciseData.exercises[pageNum - 1].dataSet[(step - 2) / 3].correct != 3) {
+                    $('#CD010LetterTile3').animate({
+                        'font-size': '0em'
+                    }, 500);
+                }
+            }
+
+
+        }
+    }
+}
+
+        $(document).ready(function() {
+            CD010();
+        });
+    </script>
+</body>
+</html>

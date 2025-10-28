@@ -1,0 +1,278 @@
+================================================================================
+COUNTDOWN TEMPLATE WIDGETS - COMPLETE LISTING
+================================================================================
+Generated: 2025-10-27
+Output Location: D:\ClaudeOutput\
+Source Location: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\
+Total Widgets: 46 (CD001 through CD046)
+================================================================================
+
+WIDGET DETAILS:
+--------------------------------------------------------------------------------
+
+CD001: CD001 - Lesson Menu
+  File: CD001-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson1\part1\exercises.json
+  Status: Complete with data
+
+CD002: CD002 - Mystery Bag: Blending Sounds
+  File: CD002-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit12\lesson3\part1\exercises.json
+  Status: Complete with data
+
+CD003: CD003 - Rocket Ship
+  File: CD003-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson1\part1\exercises.json
+  Status: Complete with data
+
+CD004: CD004 Template
+  File: CD004-widget.html
+  Data: No data found (using placeholder)
+  Status: Complete with placeholder
+
+CD005: CD005 - Concept Sort - Sort 1
+  File: CD005-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson3\part1\exercises.json
+  Status: Complete with data
+
+CD006: CD006 - Rhyme or No Rhyme? 2.1
+  File: CD006-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit33\lesson2\part1\exercises.json
+  Status: Complete with data
+
+CD007: CD007 - Directionality
+  File: CD007-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson3\part2\exercises.json
+  Status: Complete with data
+
+CD008: CD008 - Name That Sound
+  File: CD008-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson1\part2\exercises.json
+  Status: Complete with data
+
+CD009: CD009 - Connect the Letter
+  File: CD009-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson3\part1\exercises.json
+  Status: Complete with data
+
+CD010: CD010 - Which One? 14.1
+  File: CD010-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit33\lesson13\part1\exercises.json
+  Status: Complete with data
+
+CD011: CD011 - Guess My Word
+  File: CD011-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit11\lesson2\part1\exercises.json
+  Status: Complete with data
+
+CD012: CD012 - This or That?
+  File: CD012-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson1\part1\exercises.json
+  Status: Complete with data
+
+CD013: CD013 - Which Letter?
+  File: CD013-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit11\lesson2\part3\exercises.json
+  Status: Complete with data
+
+CD014: CD014 - Count, Touch & Say 11.1
+  File: CD014-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit33\lesson10\part1\exercises.json
+  Status: Complete with data
+
+CD015: CD015 - Build a Word
+  File: CD015-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson2\part3\exercises.json
+  Status: Complete with data
+
+CD016: CD016 - Find That Letter
+  File: CD016-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson4\part1\exercises.json
+  Status: Complete with data
+
+CD017: CD017 - Look, Think, Say
+  File: CD017-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson1\part3\exercises.json
+  Status: Complete with data
+
+CD018: CD018 - Pop-Up
+  File: CD018-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson1\part3\exercises.json
+  Status: Complete with data
+
+CD019: CD019 - 3-Up
+  File: CD019-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson1\part3\exercises.json
+  Status: Complete with data
+
+CD020: CD020 - Phrase Reading
+  File: CD020-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson5\part3\exercises.json
+  Status: Complete with data
+
+CD021: CD021 - Peel and Match
+  File: CD021-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit13\lesson1\part1\exercises.json
+  Status: Complete with data
+
+CD022: CD022 - Where's That Heart Word?
+  File: CD022-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson3\part3\exercises.json
+  Status: Complete with data
+
+CD023: CD023 - Unscramble This
+  File: CD023-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson4\part3\exercises.json
+  Status: Complete with data
+
+CD024: CD024 Template
+  File: CD024-widget.html
+  Data: No data found (using placeholder)
+  Status: Complete with placeholder
+
+CD025: CD025 - Add That Sound
+  File: CD025-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit13\lesson2\part1\exercises.json
+  Status: Complete with data
+
+CD026: CD026 Template
+  File: CD026-widget.html
+  Data: No data found (using placeholder)
+  Status: Complete with placeholder
+
+CD027: CD027 - Names vs. Sounds
+  File: CD027-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit17\lesson1\part1\exercises.json
+  Status: Complete with data
+
+CD028: CD028 Template
+  File: CD028-widget.html
+  Data: No data found (using placeholder)
+  Status: Complete with placeholder
+
+CD029: CD029 Template
+  File: CD029-widget.html
+  Data: No data found (using placeholder)
+  Status: Complete with placeholder
+
+CD030: CD030 Template
+  File: CD030-widget.html
+  Data: No data found (using placeholder)
+  Status: Complete with placeholder
+
+CD031: CD031 Template
+  File: CD031-widget.html
+  Data: No data found (using placeholder)
+  Status: Complete with placeholder
+
+CD032: CD032 - Categories
+  File: CD032-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson2\part1\exercises.json
+  Status: Complete with data
+
+CD033: CD033 - Exclusion from Category
+  File: CD033-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson2\part2\exercises.json
+  Status: Complete with data
+
+CD034: CD034 - Touch & Say
+  File: CD034-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit10\lesson2\part1\exercises.json
+  Status: Complete with data
+
+CD035: CD035 - Intro to Countdown
+  File: CD035-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson1\part1\exercises.json
+  Status: Complete with data
+
+CD036: CD036 - RGH, Pencil Grip
+  File: CD036-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson1\part3\exercises.json
+  Status: Complete with data
+
+CD037: CD037 - Above/Below
+  File: CD037-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson5\part2\exercises.json
+  Status: Complete with data
+
+CD038: CD038 - Similarities
+  File: CD038-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson1\part2\exercises.json
+  Status: Complete with data
+
+CD039: CD039 - Before/After
+  File: CD039-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson4\part1\exercises.json
+  Status: Complete with data
+
+CD040: CD040 - Letter-Sound Review
+  File: CD040-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit15\lesson2\part1\exercises.json
+  Status: Complete with data
+
+CD041: CD041 - RGH, Capital A
+  File: CD041-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit1\lesson5\part3\exercises.json
+  Status: Complete with data
+
+CD042: CD042 - I DO: Finger-Stretching
+  File: CD042-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit17\lesson4\part1\exercises.json
+  Status: Complete with data
+
+CD043: CD043 - I DO: Finger-Stretching
+  File: CD043-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit18\lesson2\part1\exercises.json
+  Status: Complete with data
+
+CD044: CD044 - Word Sort: Consonant or Vowel?
+  File: CD044-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit17\lesson2\part1\exercises.json
+  Status: Complete with data
+
+CD045: CD045 - Spell It!
+  File: CD045-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit18\lesson5\part1\exercises.json
+  Status: Complete with data
+
+CD046: CD046 - Sound Stories
+  File: CD046-widget.html
+  Data: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\data\units\unit2\lesson1\part2\exercises.json
+  Status: Complete with data
+
+================================================================================
+SUMMARY STATISTICS:
+================================================================================
+Total Widgets Created: 46
+Widgets with Real Data: 39
+Widgets with Placeholder Data: 7
+
+Templates with Placeholder Data:
+- CD004, CD024, CD026, CD028, CD029, CD030, CD031
+
+All widgets are standalone HTML files that can be opened directly in a browser.
+Each widget contains:
+- Complete CSS styling from interface.css, exercises.css, and icons.css
+- Complete JavaScript functions from exercises.js
+- jQuery 3.2.1 from CDN
+- Exercise data embedded as JSON
+
+================================================================================
+INDEX FILE:
+================================================================================
+Main Index: D:\ClaudeOutput\WIDGET-INDEX.html
+- Open this file to browse all widgets with clickable links
+- Includes template descriptions and data sources
+- Professional styling with hover effects
+
+================================================================================
+USAGE:
+================================================================================
+1. Open any widget by double-clicking the HTML file
+2. Or open WIDGET-INDEX.html to browse all widgets
+3. Widgets require internet connection for jQuery CDN
+4. Widgets reference images from original project directory
+
+================================================================================
+END OF LISTING
+================================================================================

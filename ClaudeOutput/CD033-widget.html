@@ -1,0 +1,414 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD033 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .icDog {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icDog.svg');
+        }
+
+        .icFlower {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icFlower.svg');
+        }
+
+        .icFrog {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icFrog.svg');
+        }
+
+        .icLeaf {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icLeaf.svg');
+        }
+
+        .icPig {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icPig.svg');
+        }
+
+        .icTree {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icTree.svg');
+        }
+
+        .icZebra {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icZebra.svg');
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD033" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD033",
+        "title": "Exclusion from Category",
+        "dataSet": [
+            {
+                "icons": [
+                    {
+                        "icon": "icFrog",
+                        "x": "true"
+                    },
+                    {
+                        "icon": "icTree",
+                        "x": "false"
+                    },
+                    {
+                        "icon": "icZebra",
+                        "x": "true"
+                    },
+                    {
+                        "icon": "icFlower",
+                        "x": "false"
+                    },
+                    {
+                        "icon": "icPig",
+                        "x": "true"
+                    },
+                    {
+                        "icon": "icLeaf",
+                        "x": "false"
+                    },
+                    {
+                        "icon": "icDog",
+                        "x": "true"
+                    }
+                ]
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+        var CD033IconSize;
+        var CD033colWidthEms;
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD033();
+        }
+
+        function CD033() {
+
+    $('#CD033').css('padding-left', '0');
+    $('#CD033').css('padding-right', '0');
+    var colWidth = 100 / exerciseData.exercises[pageNum - 1].dataSet[0].icons.length;
+    var cols = exerciseData.exercises[pageNum - 1].dataSet[0].icons.length;
+    CD033colWidthEms = ($('#CD033').width() / parseFloat($('#CD033').css('font-size'))) / exerciseData.exercises[pageNum - 1].dataSet[0].icons.length;
+    var colHeightEms = $('#CD033').height() / parseFloat($('#CD033').css('font-size'));
+    CD033IconSize = CD033colWidthEms * .9;
+
+    if (CD033IconSize > colHeightEms * .8) {
+        CD033IconSize = CD033colWidthEms * .7;
+    }
+
+    var htmlString = '';
+
+
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].icons.length; i++) {
+        if (i == 4) {
+            htmlString += '<div class="breakBlock"></div>';
+        }
+        htmlString += '<div id="CD033IconBlock" class="flexBlockInline">';
+        htmlString += '<div id="CD033image' + i + '" class="standardIcon ' + exerciseData.exercises[pageNum - 1].dataSet[0].icons[i].icon + '"></div>';
+        if (exerciseData.exercises[pageNum - 1].dataSet[0].icons[i].x == 'true') {
+            htmlString += '<div id="CD033imageX' + i + '" class="iconX iconXHidden"></div>';
+        }
+        htmlString += '</div>';
+    }
+
+    $('#CD033').html(htmlString);
+    $('#CD033 .flexBlock').css('width', (CD033colWidthEms - .5) + 'em');
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].icons.length; i++) {
+        $('#CD033image' + i).css('height', CD033IconSize + 'em');
+        $('#CD033image' + i).css('width', CD033IconSize + 'em');
+        $('#CD033image' + i).css('display', 'none');
+    }
+
+    $('#CD033 .standardIcon').fadeIn(500);
+    $('#CD033').unbind();
+    $('#CD033').bind(clicker, function () {
+        CD033Play();
+    });
+    initPage();
+}
+
+        function CD033Play() {
+    var clickArray = [];
+    var xArray = [];
+    var totalClicks = 0;
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+        var subClicks = 0;
+        var xObject = [];
+        for (j = 0; j < exerciseData.exercises[pageNum - 1].dataSet[i].icons.length; j++) {
+            if (exerciseData.exercises[pageNum - 1].dataSet[i].icons[j].x == 'true') {
+                subClicks++;
+                totalClicks++;
+                xObject.push((j));
+            }
+        }
+        totalClicks += 2;
+        clickArray.push({
+            'subClicks': subClicks,
+            'totalClicks': totalClicks
+        });
+        xArray.push(xObject);
+    }
+    step++;
+    if (step == totalClicks) {
+        nextPage();
+    } else {
+        var setNum = 0;
+        while (step > clickArray[setNum].totalClicks) {
+            setNum++;
+        }
+        console.log(clickArray);
+        console.log('setNum:' + setNum);
+        console.log('step:' + step);
+
+        if (step < clickArray[setNum].totalClicks - 1) {
+            var subStep = step - (clickArray[setNum].totalClicks - clickArray[setNum].subClicks) + 2;
+            console.log('subStep:' + subStep);
+            console.log('#CD033ImageX' + xArray[setNum][subStep - 1]);
+            $('#CD033imageX' + xArray[setNum][subStep - 1]).removeClass('iconXHidden');
+
+        } else {
+            if (step < clickArray[setNum].totalClicks) {
+                //Build two column here
+
+                var htmlString = '';
+
+                //Col 1
+
+                htmlString += '<div id="#CD033Left" class="colLeft">';
+
+                for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[setNum].icons.length; i++) {
+                    if (exerciseData.exercises[pageNum - 1].dataSet[setNum].icons[i].x == 'false') {
+                        htmlString += '<div id="CD033IconBlock" class="flexBlockInline">';
+                        htmlString += '<div id="CD033image' + i + '" class="standardIcon ' + exerciseData.exercises[pageNum - 1].dataSet[setNum].icons[i].icon + '"></div>';
+                        htmlString += '</div>';
+                    }
+                }
+                htmlString += '</div>';
+                htmlString += '<div id="#CD033Right" class="colRight">';
+
+                for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[setNum].icons.length; i++) {
+                    if (exerciseData.exercises[pageNum - 1].dataSet[setNum].icons[i].x == 'true') {
+                        htmlString += '<div id="CD033IconBlock" class="flexBlockInline">';
+                        htmlString += '<div id="CD033image' + i + '" class="standardIcon ' + exerciseData.exercises[pageNum - 1].dataSet[setNum].icons[i].icon + '"></div>';
+                        htmlString += '</div>';
+                    }
+                }
+
+                htmlString += '</div>';
+                $('#CD033').html(htmlString);
+
+                var cols = exerciseData.exercises[pageNum - 1].dataSet[setNum].icons.length;
+                CD033colWidthEms = ($('#CD033').width() / parseFloat($('#CD033').css('font-size'))) / exerciseData.exercises[pageNum - 1].dataSet[setNum].icons.length;
+                var colHeightEms = $('#CD033').height() / parseFloat($('#CD033').css('font-size'));
+                CD033IconSize = CD033colWidthEms * .9;
+
+                for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[setNum].icons.length; i++) {
+                    $('#CD033image' + i).css('height', CD033IconSize + 'em');
+                    $('#CD033image' + i).css('width', CD033IconSize + 'em');
+                    $('#CD033image' + i).css('display', 'none');
+                }
+                $('#CD033 .standardIcon').fadeIn(500);
+            } else {
+                $('#CD033').css('padding-left', '0');
+                $('#CD033').css('padding-right', '0');
+                var colWidth = 100 / exerciseData.exercises[pageNum - 1].dataSet[setNum + 1].icons.length;
+                var cols = exerciseData.exercises[pageNum - 1].dataSet[setNum + 1].icons.length;
+                CD033colWidthEms = ($('#CD033').width() / parseFloat($('#CD033').css('font-size'))) / exerciseData.exercises[pageNum - 1].dataSet[setNum + 1].icons.length;
+                var colHeightEms = $('#CD033').height() / parseFloat($('#CD033').css('font-size'));
+                CD033IconSize = CD033colWidthEms * .9;
+
+                if (CD033IconSize > colHeightEms * .8) {
+                    CD033IconSize = CD033colWidthEms * .7;
+                }
+
+                var htmlString = '';
+
+
+                for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[setNum + 1].icons.length; i++) {
+                    if (i == 4) {
+                        htmlString += '<div class="breakBlock"></div>';
+                    }
+                    htmlString += '<div id="CD033IconBlock" class="flexBlockInline">';
+                    htmlString += '<div id="CD033image' + i + '" class="standardIcon ' + exerciseData.exercises[pageNum - 1].dataSet[setNum + 1].icons[i].icon + '"></div>';
+                    if (exerciseData.exercises[pageNum - 1].dataSet[setNum + 1].icons[i].x == 'true') {
+                        htmlString += '<div id="CD033imageX' + i + '" class="iconX iconXHidden"></div>';
+                    }
+                    htmlString += '</div>';
+                }
+
+                $('#CD033').html(htmlString);
+                $('#CD033 .flexBlock').css('width', (CD033colWidthEms - .5) + 'em');
+                for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[setNum + 1].icons.length; i++) {
+                    $('#CD033image' + i).css('height', CD033IconSize + 'em');
+                    $('#CD033image' + i).css('width', CD033IconSize + 'em');
+                    $('#CD033image' + i).css('display', 'none');
+                }
+
+                $('#CD033 .standardIcon').fadeIn(500);
+                $('#CD033').unbind();
+                $('#CD033').bind(clicker, function () {
+                    CD033Play();
+                });
+            }
+        }
+    }
+
+}
+
+        $(document).ready(function() {
+            CD033();
+        });
+    </script>
+</body>
+</html>

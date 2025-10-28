@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which Letter? - Standalone Widget</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #3498db 0%, #8e44ad 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        #widget-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 800px;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #header {
+            background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        #header p {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        #CD013 {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            padding: 40px;
+        }
+
+        .question-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .blockIcon {
+            font-size: 8em;
+            margin-bottom: 20px;
+        }
+
+        .word-display {
+            font-size: 4em;
+            margin: 30px 0;
+            font-weight: bold;
+            letter-spacing: 0.3em;
+        }
+
+        .blank {
+            display: inline-block;
+            width: 1.2em;
+            height: 1.2em;
+            border-bottom: 5px solid #3498db;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+
+        .vowel {
+            color: #e74c3c;
+        }
+
+        .letter {
+            color: #2c3e50;
+        }
+
+        .answer-choices {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .answer-btn {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 3em;
+            font-weight: bold;
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .answer-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .answer-btn.correct {
+            background: linear-gradient(145deg, #27ae60, #229954);
+            animation: correctPulse 0.5s;
+        }
+
+        .answer-btn.incorrect {
+            background: linear-gradient(145deg, #e74c3c, #c0392b);
+            animation: shake 0.5s;
+        }
+
+        @keyframes correctPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        #progress {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        #score {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        #completion {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+            min-width: 400px;
+        }
+
+        #completion h2 {
+            color: #27ae60;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #completion .final-score {
+            font-size: 2em;
+            color: #3498db;
+            margin: 20px 0;
+        }
+
+        #completion button {
+            background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #completion button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Icon Definitions */
+        .icBed::before { content: '🛏️'; }
+        .icVan::before { content: '🚐'; }
+        .icSun::before { content: '☀️'; }
+        .icBoy::before { content: '👦'; }
+        .icLog::before { content: '🪵'; }
+        .icRug::before { content: '🧺'; }
+        .icHug::before { content: '🤗'; }
+        .icPen::before { content: '✒️'; }
+        .icHop::before { content: '🐰'; }
+        .icPig::before { content: '🐷'; }
+    </style>
+</head>
+<body>
+    <div id="widget-container">
+        <div id="header">
+            <h1>❓ Which Letter?</h1>
+            <p>Choose the correct missing letter</p>
+        </div>
+
+        <div id="CD013">
+            <div id="progress">Question 1 of 10</div>
+            <div id="score">Score: 0</div>
+            <div class="question-container">
+                <div id="icon" class="blockIcon"></div>
+                <div id="word" class="word-display"></div>
+                <div class="answer-choices" id="answers"></div>
+            </div>
+        </div>
+
+        <div id="completion">
+            <h2>🎉 Quiz Complete!</h2>
+            <div class="final-score" id="finalScore"></div>
+            <button onclick="resetWidget()">Try Again</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Sample Data
+        var exerciseData = {
+            exercises: [{
+                pageID: "CD013",
+                title: "Which Letter? Sample",
+                dataSet: [
+                    {
+                        icon: "icBed",
+                        letters: ["b", "e", "d"],
+                        blankSpot: "1",
+                        answers: ["b", "k", "r"],
+                        correctSpot: "1"
+                    },
+                    {
+                        icon: "icVan",
+                        letters: ["v", "a", "n"],
+                        blankSpot: "1",
+                        answers: ["b", "v", "t"],
+                        correctSpot: "2"
+                    },
+                    {
+                        icon: "icSun",
+                        letters: ["s", "u", "n"],
+                        blankSpot: "1",
+                        answers: ["s", "h", "t"],
+                        correctSpot: "1"
+                    },
+                    {
+                        icon: "icBoy",
+                        letters: ["k", "i", "d"],
+                        blankSpot: "1",
+                        answers: ["b", "h", "k"],
+                        correctSpot: "3"
+                    },
+                    {
+                        icon: "icLog",
+                        letters: ["l", "o", "g"],
+                        blankSpot: "1",
+                        answers: ["c", "l", "s"],
+                        correctSpot: "2"
+                    },
+                    {
+                        icon: "icRug",
+                        letters: ["r", "u", "g"],
+                        blankSpot: "1",
+                        answers: ["n", "p", "r"],
+                        correctSpot: "3"
+                    },
+                    {
+                        icon: "icHug",
+                        letters: ["h", "u", "g"],
+                        blankSpot: "1",
+                        answers: ["h", "s", "m"],
+                        correctSpot: "1"
+                    },
+                    {
+                        icon: "icPen",
+                        letters: ["p", "e", "n"],
+                        blankSpot: "1",
+                        answers: ["v", "p", "f"],
+                        correctSpot: "2"
+                    },
+                    {
+                        icon: "icHop",
+                        letters: ["h", "o", "p"],
+                        blankSpot: "1",
+                        answers: ["c", "d", "h"],
+                        correctSpot: "3"
+                    },
+                    {
+                        icon: "icPig",
+                        letters: ["p", "i", "g"],
+                        blankSpot: "1",
+                        answers: ["s", "p", "k"],
+                        correctSpot: "2"
+                    }
+                ]
+            }]
+        };
+
+        var pageNum = 1;
+        var currentQuestion = 0;
+        var score = 0;
+        var answered = false;
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function CD013() {
+            currentQuestion = 0;
+            score = 0;
+            updateScore();
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentQuestion >= exerciseData.exercises[pageNum - 1].dataSet.length) {
+                showCompletion();
+                return;
+            }
+
+            answered = false;
+            var data = exerciseData.exercises[pageNum - 1].dataSet[currentQuestion];
+
+            // Update progress
+            $('#progress').text('Question ' + (currentQuestion + 1) + ' of ' + exerciseData.exercises[pageNum - 1].dataSet.length);
+
+            // Update icon
+            $('#icon').attr('class', 'blockIcon ' + data.icon);
+
+            // Build word with blank
+            var wordHTML = '';
+            var blankIndex = parseInt(data.blankSpot) - 1;
+            for (var i = 0; i < data.letters.length; i++) {
+                if (i === blankIndex) {
+                    wordHTML += '<span class="blank"></span>';
+                } else {
+                    wordHTML += checkLetter(data.letters[i]);
+                }
+            }
+            $('#word').html(wordHTML);
+
+            // Build answer buttons
+            var answersHTML = '';
+            for (var i = 0; i < data.answers.length; i++) {
+                answersHTML += '<button class="answer-btn" onclick="checkAnswer(' + (i + 1) + ')">';
+                answersHTML += checkLetter(data.answers[i]);
+                answersHTML += '</button>';
+            }
+            $('#answers').html(answersHTML);
+        }
+
+        function checkAnswer(choice) {
+            if (answered) return;
+            answered = true;
+
+            var data = exerciseData.exercises[pageNum - 1].dataSet[currentQuestion];
+            var correctChoice = parseInt(data.correctSpot);
+            var $buttons = $('.answer-btn');
+
+            if (choice === correctChoice) {
+                // Correct answer
+                $buttons.eq(choice - 1).addClass('correct');
+                score++;
+                updateScore();
+
+                setTimeout(function() {
+                    currentQuestion++;
+                    showQuestion();
+                }, 1500);
+            } else {
+                // Incorrect answer
+                $buttons.eq(choice - 1).addClass('incorrect');
+                $buttons.eq(correctChoice - 1).addClass('correct');
+
+                setTimeout(function() {
+                    currentQuestion++;
+                    showQuestion();
+                }, 2000);
+            }
+        }
+
+        function updateScore() {
+            $('#score').text('Score: ' + score);
+        }
+
+        function showCompletion() {
+            var total = exerciseData.exercises[pageNum - 1].dataSet.length;
+            var percentage = Math.round((score / total) * 100);
+            $('#finalScore').html('You scored <strong>' + score + ' out of ' + total + '</strong><br>(' + percentage + '%)');
+            $('#completion').fadeIn(500);
+        }
+
+        function resetWidget() {
+            $('#completion').fadeOut(300);
+            setTimeout(function() {
+                CD013();
+            }, 300);
+        }
+
+        // Initialize when page loads
+        $(document).ready(function() {
+            CD013();
+        });
+    </script>
+</body>
+</html>

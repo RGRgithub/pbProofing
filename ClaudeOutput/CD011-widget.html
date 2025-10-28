@@ -1,0 +1,565 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD011 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .icBag {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icBag.svg');
+        }
+
+        .icBat {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icBat.svg');
+        }
+
+        .icBed {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icBed.svg');
+        }
+
+        .icBeg {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icBeg.svg');
+        }
+
+        .icBoy {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icBoy.svg');
+        }
+
+        .icBug {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icBug.svg');
+        }
+
+        .icKit {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icKit.svg');
+        }
+
+        .icLeg {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icLeg.svg');
+        }
+
+        .icLog {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icLog.svg');
+        }
+
+        .icNet {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icNet.svg');
+        }
+
+        .icPen {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icPen.svg');
+        }
+
+        .icSob {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icSob.svg');
+        }
+
+        .icTen {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icTen.svg');
+        }
+
+        .icVan {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icVan.svg');
+        }
+
+        .icVet {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icVet.svg');
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD011" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD011",
+        "title": "Guess My Word",
+        "dataSet": [
+            {
+                "icon": "icVan",
+                "letters": [
+                    "v",
+                    "a",
+                    "n"
+                ],
+                "preorder": [
+                    "2",
+                    "3",
+                    "1"
+                ]
+            },
+            {
+                "icon": "icBed",
+                "letters": [
+                    "b",
+                    "e",
+                    "d"
+                ],
+                "preorder": [
+                    "1",
+                    "3",
+                    "2"
+                ]
+            },
+            {
+                "icon": "icLeg",
+                "letters": [
+                    "l",
+                    "e",
+                    "g"
+                ],
+                "preorder": [
+                    "2",
+                    "1",
+                    "3"
+                ]
+            },
+            {
+                "icon": "icBat",
+                "letters": [
+                    "b",
+                    "a",
+                    "t"
+                ],
+                "preorder": [
+                    "3",
+                    "2",
+                    "1"
+                ]
+            },
+            {
+                "icon": "icPen",
+                "letters": [
+                    "p",
+                    "e",
+                    "n"
+                ],
+                "preorder": [
+                    "1",
+                    "3",
+                    "2"
+                ]
+            },
+            {
+                "icon": "icBug",
+                "letters": [
+                    "b",
+                    "u",
+                    "g"
+                ],
+                "preorder": [
+                    "2",
+                    "1",
+                    "3"
+                ]
+            },
+            {
+                "icon": "icNet",
+                "letters": [
+                    "n",
+                    "e",
+                    "t"
+                ],
+                "preorder": [
+                    "1",
+                    "3",
+                    "2"
+                ]
+            },
+            {
+                "icon": "icBoy",
+                "letters": [
+                    "k",
+                    "i",
+                    "d"
+                ],
+                "preorder": [
+                    "2",
+                    "3",
+                    "1"
+                ]
+            },
+            {
+                "icon": "icLog",
+                "letters": [
+                    "l",
+                    "o",
+                    "g"
+                ],
+                "preorder": [
+                    "1",
+                    "3",
+                    "2"
+                ]
+            },
+            {
+                "icon": "icBag",
+                "letters": [
+                    "b",
+                    "a",
+                    "g"
+                ],
+                "preorder": [
+                    "3",
+                    "1",
+                    "2"
+                ]
+            },
+            {
+                "icon": "icVet",
+                "letters": [
+                    "v",
+                    "e",
+                    "t"
+                ],
+                "preorder": [
+                    "1",
+                    "3",
+                    "2"
+                ]
+            },
+            {
+                "icon": "icTen",
+                "letters": [
+                    "t",
+                    "e",
+                    "n"
+                ],
+                "preorder": [
+                    "2",
+                    "1",
+                    "3"
+                ]
+            },
+            {
+                "icon": "icKit",
+                "letters": [
+                    "k",
+                    "i",
+                    "t"
+                ],
+                "preorder": [
+                    "1",
+                    "3",
+                    "2"
+                ]
+            },
+            {
+                "icon": "icBeg",
+                "letters": [
+                    "b",
+                    "e",
+                    "g"
+                ],
+                "preorder": [
+                    "2",
+                    "1",
+                    "3"
+                ]
+            },
+            {
+                "icon": "icSob",
+                "letters": [
+                    "s",
+                    "o",
+                    "b"
+                ],
+                "preorder": [
+                    "2",
+                    "3",
+                    "1"
+                ]
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+        var CD011Positions = [];
+        var CD011FinalPositions = [];
+        var CD011ClickArray = [];
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD011();
+        }
+
+        function CD011() {
+    var clickVal = 0;
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+        clickVal += exerciseData.exercises[pageNum - 1].dataSet[i].letters.length;
+        clickVal += 2;
+        CD011ClickArray.push(clickVal);
+    }
+
+    CD011Positions = [];
+    CD011FinalPositions = [];
+    CD011WidthEms = $('#CD011').width() / parseFloat($('#CD011').css('font-size'));
+
+    CD011CenterEms = CD011WidthEms / 2 + exerciseData.exercises[pageNum - 1].dataSet[0].letters.length * 1;
+    var letterWidth = 8;
+    var finalLetterWidth = 6.5;
+    var wordWidth = letterWidth * exerciseData.exercises[pageNum - 1].dataSet[0].letters.length;
+    var startLetters = CD011CenterEms - wordWidth / 2;
+
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].letters.length; i++) {
+        CD011Positions.push(startLetters + letterWidth * i);
+        CD011FinalPositions.push(startLetters + finalLetterWidth * i);
+    }
+
+    var htmlString = '';
+    htmlString += '<div id="CD011" class="fullScreen">';
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].letters.length; i++) {
+        htmlString += '<div id="CD011LetterTile' + (i + 1) + '" class="letterTileBack"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[0].letters[i]) + '</div></div>';
+    }
+
+    htmlString += '</div>';
+    htmlString += '<div id="CD011image" class="blockIcon ' + exerciseData.exercises[pageNum - 1].dataSet[0].icon + '"></div>';
+
+    $('#CD011').html(htmlString);
+    $('#CD011image').css('font-size', '1.75em');
+    $('#CD011image').hide();
+    $('#CD011 .letterTile').css('font-size', '4em');
+    var tileHeight = 4;
+
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].letters.length; i++) {
+        $('#CD011 .letterTile').css('font-size', '4em');
+        $('#CD011LetterTile' + (i + 1)).css('position', 'absolute');
+        $('#CD011LetterTile' + (i + 1)).css('top', (tileHeight * (exerciseData.exercises[pageNum - 1].dataSet[0].preorder[i] - 1) + 4) + 'em');
+        $('#CD011LetterTile' + (i + 1)).css('top', (tileHeight * (exerciseData.exercises[pageNum - 1].dataSet[0].preorder[i] - 1) + 4) + 'em');
+        $('#CD011LetterTile' + (i + 1)).css('left', CD011Positions[exerciseData.exercises[pageNum - 1].dataSet[0].preorder[i] - 1] + 'em');
+    }
+
+    $('#CD011').unbind();
+    $('#CD011').bind(clicker, function () {
+        CD011Play();
+    });
+    initPage();
+}
+
+        function CD011Play() {
+
+    step++;
+    if (step >= CD011ClickArray[CD011ClickArray.length - 1]) {
+        nextPage();
+
+    } else {
+        //Find current array position
+        var item = 0;
+        while (step > CD011ClickArray[item]) {
+            item++;
+        }
+
+        if (step == CD011ClickArray[item]) {
+            item++;
+            //redraw
+            CD011Positions = [];
+            CD011FinalPositions = [];
+            CD011WidthEms = $('#CD011').width() / parseFloat($('#CD011').css('font-size'));
+
+            CD011CenterEms = CD011WidthEms / 2 + exerciseData.exercises[pageNum - 1].dataSet[item].letters.length * .75;
+            var letterWidth = 8;
+            var finalLetterWidth = 6.5;
+            var wordWidth = letterWidth * exerciseData.exercises[pageNum - 1].dataSet[item].letters.length;
+            var startLetters = CD011CenterEms - wordWidth / 2;
+
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[item].letters.length; i++) {
+                CD011Positions.push(startLetters + letterWidth * i);
+                CD011FinalPositions.push(startLetters + finalLetterWidth * i);
+            }
+
+            var htmlString = '';
+            htmlString += '<div id="CD011" class="fullScreen">';
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[item].letters.length; i++) {
+                htmlString += '<div id="CD011LetterTile' + (i + 1) + '" class="letterTileBack"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[item].letters[i]) + '</div></div>';
+            }
+
+            htmlString += '</div>';
+            htmlString += '<div id="CD011image" class="blockIcon ' + exerciseData.exercises[pageNum - 1].dataSet[item].icon + '"></div>';
+
+            $('#CD011').html(htmlString);
+            $('#CD011image').css('font-size', '1.75em');
+            $('#CD011image').hide();
+
+            var tileHeight = 4;
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[item].letters.length; i++) {
+                $('#CD011 .letterTile').css('font-size', '4em');
+                $('#CD011LetterTile' + (i + 1)).css('position', 'absolute');
+                $('#CD011LetterTile' + (i + 1)).css('top', (tileHeight * (exerciseData.exercises[pageNum - 1].dataSet[item].preorder[i] - 1) + 4) + 'em');
+                $('#CD011LetterTile' + (i + 1)).css('left', CD011Positions[exerciseData.exercises[pageNum - 1].dataSet[item].preorder[i] - 1] + 'em');
+            }
+
+            $('#CD011').unbind();
+            $('#CD011').bind(clicker, function () {
+                CD011Play();
+            });
+
+        } else {
+            if (step < CD011ClickArray[item] - 1) {
+                var tileToMove = exerciseData.exercises[pageNum - 1].dataSet[item].letters.length - (CD011ClickArray[item] - step) + 1;
+
+                var newTop = $('#CD011').height() / parseFloat($('#CD011').css('font-size')) - 4;
+                var newTop = 28;
+                //for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[item].letters.length; i++) {
+                $('#CD011LetterTile' + (tileToMove + 1)).css('transition', 'all 1s 0s');
+                $('#CD011LetterTile' + (tileToMove + 1)).css('top', newTop + 'em');
+                $('#CD011LetterTile' + (tileToMove + 1)).css('left', CD011FinalPositions[tileToMove] + 'em');
+                //}
+            } else {
+                $('#CD011image').fadeIn(1000);
+            }
+        }
+    }
+}
+
+        $(document).ready(function() {
+            CD011();
+        });
+    </script>
+</body>
+</html>

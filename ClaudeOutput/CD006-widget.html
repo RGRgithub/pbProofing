@@ -1,0 +1,422 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD006 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD006" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD006",
+        "title": "Rhyme or No Rhyme? 2.1",
+        "dataSet": [
+            {
+                "icons": [
+                    "icChess",
+                    "icYes"
+                ],
+                "check": "true"
+            },
+            {
+                "icons": [
+                    "icWig",
+                    "icPot"
+                ],
+                "check": "false"
+            },
+            {
+                "icons": [
+                    "icBox",
+                    "icFox"
+                ],
+                "check": "true"
+            },
+            {
+                "icons": [
+                    "icChair",
+                    "icBear"
+                ],
+                "check": "true"
+            },
+            {
+                "icons": [
+                    "icSun",
+                    "icSheep"
+                ],
+                "check": "false"
+            },
+            {
+                "icons": [
+                    "icWing",
+                    "icRing"
+                ],
+                "check": "true"
+            },
+            {
+                "icons": [
+                    "icGate",
+                    "icFeet"
+                ],
+                "check": "false"
+            },
+            {
+                "icons": [
+                    "icPan",
+                    "icMan"
+                ],
+                "check": "true"
+            },
+            {
+                "icons": [
+                    "icSock",
+                    "icShirt"
+                ],
+                "check": "false"
+            },
+            {
+                "icons": [
+                    "icCheck",
+                    "icHeart"
+                ],
+                "check": "false"
+            },
+            {
+                "icons": [
+                    "icJar",
+                    "icCar"
+                ],
+                "check": "true"
+            },
+            {
+                "icons": [
+                    "icRose",
+                    "icHose"
+                ],
+                "check": "true"
+            },
+            {
+                "icons": [
+                    "icBug",
+                    "icMouse"
+                ],
+                "check": "false"
+            },
+            {
+                "icons": [
+                    "icVan",
+                    "icMan"
+                ],
+                "check": "true"
+            },
+            {
+                "icons": [
+                    "icMix",
+                    "icBus"
+                ],
+                "check": "false"
+            },
+            {
+                "icons": [
+                    "icHug",
+                    "icBug"
+                ],
+                "check": "true"
+            },
+            {
+                "icons": [
+                    "icChin",
+                    "icNail"
+                ],
+                "check": "false"
+            },
+            {
+                "icons": [
+                    "icKey",
+                    "icTree"
+                ],
+                "check": "true"
+            },
+            {
+                "icons": [
+                    "icWig",
+                    "icHorse"
+                ],
+                "check": "false"
+            },
+            {
+                "icons": [
+                    "icDeer",
+                    "icEar"
+                ],
+                "check": "true"
+            },
+            {
+                "icons": [
+                    "icCake",
+                    "icOven"
+                ],
+                "check": "true"
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+        var CD006IconSize;
+        var CD006colWidthEms;
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD006();
+        }
+
+        function CD006() {
+
+    $('#CD006').css('padding-left', '0');
+    $('#CD006').css('padding-right', '0');
+    var colWidth = 100 / exerciseData.exercises[pageNum - 1].dataSet[0].icons.length;
+    CD006colWidthEms = ($('#CD006').width() / parseFloat($('#CD006').css('font-size'))) / exerciseData.exercises[pageNum - 1].dataSet[0].icons.length;
+    var colHeightEms = $('#CD006').height() / parseFloat($('#CD006').css('font-size'));
+    CD006IconSize = colHeightEms * .6;
+
+    var htmlString = '';
+
+
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].icons.length; i++) {
+        htmlString += '<div id="CD006IconBlock" class="flexBlock">';
+        htmlString += '<div id="CD006image' + i + '" class="standardIcon ' + exerciseData.exercises[pageNum - 1].dataSet[0].icons[i] + '"></div>';
+        htmlString += '</div>';
+    }
+
+    htmlString += '<div id="CD006CheckBox" class="checkBox">';
+    htmlString += '<div id="CD006CheckTrue" class="checkMark checkTrue"></div>';
+    htmlString += '<div id="CD006CheckFalse" class="checkMark checkFalse"></div>';
+    htmlString += '</div>';
+    $('#CD006').html(htmlString);
+    $('#CD006 .flexBlock').css('width', (CD006colWidthEms - .5) + 'em');
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].icons.length; i++) {
+        $('#CD006image' + i).css('height', CD006IconSize + 'em');
+        $('#CD006image' + i).css('width', CD006IconSize + 'em');
+        $('#CD006image' + i).css('display', 'none');
+    }
+
+    $('#CD006 .standardIcon').fadeIn(500);
+    $('#CD006 .checkMark').hide();
+    $('#CD006').unbind();
+    $('#CD006').bind(clicker, function () {
+        CD006Play();
+    });
+    initPage();
+}
+
+        function CD006Play() {
+    step++;
+    if (step + 1 > exerciseData.exercises[pageNum - 1].dataSet.length * 2) {
+        nextPage();
+    } else {
+        if (step % 2 == 0) {
+            $('#CD006').css('padding-left', '0');
+            $('#CD006').css('padding-right', '0');
+            var colWidth = 100 / exerciseData.exercises[pageNum - 1].dataSet[step / 2].icons.length;
+            CD006colWidthEms = ($('#CD006').width() / parseFloat($('#CD006').css('font-size'))) / exerciseData.exercises[pageNum - 1].dataSet[step / 2].icons.length;
+            var colHeightEms = $('#CD006').height() / parseFloat($('#CD006').css('font-size'));
+            CD006IconSize = colHeightEms * .6;
+
+            var htmlString = '';
+
+
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[step / 2].icons.length; i++) {
+                htmlString += '<div id="CD006IconBlock" class="flexBlock">';
+                htmlString += '<div id="CD006image' + i + '" class="standardIcon ' + exerciseData.exercises[pageNum - 1].dataSet[step / 2].icons[i] + '"></div>';
+                htmlString += '</div>';
+            }
+
+            htmlString += '<div id="CD006CheckBox" class="checkBox">';
+            htmlString += '<div id="CD006CheckTrue" class="checkMark checkTrue"></div>';
+            htmlString += '<div id="CD006CheckFalse" class="checkMark checkFalse"></div>';
+            htmlString += '</div>';
+
+            $('#CD006').html(htmlString);
+            $('#CD006 .flexBlock').css('width', (CD006colWidthEms - .5) + 'em');
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[step / 2].icons.length; i++) {
+                $('#CD006image' + i).css('height', CD006IconSize + 'em');
+                $('#CD006image' + i).css('width', CD006IconSize + 'em');
+                $('#CD006image' + i).css('display', 'none');
+            }
+
+            $('#CD006 .standardIcon').fadeIn(500);
+            $('#CD006 .checkMark').hide();
+            $('#CD006').unbind();
+            $('#CD006').bind(clicker, function () {
+                CD006Play();
+            });
+        } else {
+            if (exerciseData.exercises[pageNum - 1].dataSet[(step - 1) / 2].check == 'true') {
+                $('#CD006 .checkTrue').fadeIn(500);
+            } else {
+                $('#CD006 .checkFalse').fadeIn(500);
+            }
+        }
+
+
+    }
+
+}
+
+        $(document).ready(function() {
+            CD006();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD046 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .icMysterybag {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icMysterybag.svg');
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD046" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD046",
+        "title": "Sound Stories",
+        "icon": "icMysterybag",
+        "video": "Michael",
+        "video2": "2022-Countdown-SoundStories-Michael_001_1",
+        "icon2": "icMichaelMonkey",
+        "audio": "MichaelLong"
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD046();
+        }
+
+        function CD046() {
+    $('#nextButton').fadeOut(100);
+    var htmlString = '';
+    //create icons with audio
+    htmlString += '<div id="CD046IconBlock1" class="fullScreen">';
+    htmlString += '<div id="CD046Icon1" class="standardIcon fullScreenIcon"></div>';
+
+    //htmlString += '<div id="CD046Play1" class="playButton">PLAY</div>';
+    htmlString += '</div>';
+    htmlString += '<div id="CD046IconBlock2" class="fullScreen hiddenBlock">';
+    htmlString += '<div id="CD046Icon2" class="standardIcon fullScreenIcon"></div>';
+    var mp3Audio1 = 'audio/' + exerciseData.exercises[pageNum - 1].audio + '.mp3';
+    var oggAudio1 = 'audio/' + exerciseData.exercises[pageNum - 1].audio + '.ogg';
+    htmlString += '<audio id="CD046Audio1" class="audio" controls controlsList="nodownload">';
+    htmlString += '<source src="' + mp3Audio1 + '" type="audio/mp3">';
+    htmlString += '<source src="' + oggAudio1 + '" type="audio/ogg">';
+    htmlString += '</audio>';
+
+    //htmlString += '<div id="CD046Play1" class="playButton">PLAY</div>';
+    htmlString += '</div>';
+
+    htmlString += '<div id="CD046VideoBlock" class="fullScreen hiddenBlock">';
+    var mp4Video = 'video/' + exerciseData.exercises[pageNum - 1].video + '.mp4';
+    var oggVideo = 'video/' + exerciseData.exercises[pageNum - 1].video + '.ogg';
+    htmlString += '<video id="CD046Vid" class="video" controls controlsList="nodownload">';
+    htmlString += '<source src="' + mp4Video + '" type="video/mp4">';
+    htmlString += '<source src="' + oggVideo + '" type="video/ogg">';
+    htmlString += '</video>';
+
+    htmlString += '</div>';
+    htmlString += '<div id="CD046Next" class="nextButton">NEXT</div>';
+
+    $('#CD046').html(htmlString);
+    $('#CD046Audio1').hide();
+    $('#CD046Icon1').addClass(exerciseData.exercises[pageNum - 1].icon);
+    $('#CD046Icon2').addClass(exerciseData.exercises[pageNum - 1].icon2);
+    $('#CD046').unbind();
+    $('#CD046Next').unbind();
+    $('#CD046Next').bind(clicker, function () {
+        CD046Play();
+    });
+    initPage();
+}
+
+        function CD046Play() {
+    step++;
+    console.log(step);
+    switch (step) {
+        case 1:
+            $('#CD046IconBlock1').hide();
+            $('#CD046IconBlock2').fadeIn(250);
+            break;
+        case 2:
+            $('#CD046IconBlock2').hide();
+            $('#CD046IconBlock2').hide();
+            $('#CD046VideoBlock').show();
+            $('#CD046Vid').get(0).pause();
+            break;
+        case 3:
+            $('#CD046IconBlock2').hide();
+            $('#CD046Vid').get(0).pause();
+            var htmlString = '';
+            var mp4Video2 = 'video/' + exerciseData.exercises[pageNum - 1].video2 + '.mp4';
+            var oggVideo2 = 'video/' + exerciseData.exercises[pageNum - 1].video2 + '.ogg';
+            htmlString += '<video id="CD046Vid" class="video" controls controlsList="nodownload">';
+            htmlString += '<source src="' + mp4Video2 + '" type="video/mp4">';
+            htmlString += '<source src="' + oggVideo2 + '" type="video/ogg">';
+            htmlString += '</video>';
+            $('#CD046VideoBlock').html(htmlString);
+            $('#CD046VideoBlock').show();
+            $('#CD046Vid').get(0).pause();
+            $('#CD046Vid').get(0).currentTime = 0;
+
+            break;
+        case 4:
+            $('#CD046Vid').get(0).pause();
+            $('#CD046VideoBlock').html('');
+            $('#CD046VideoBlock').hide();
+            $('#CD046IconBlock2').fadeIn(250);
+
+            var mp3Audio = 'audio/' + exerciseData.exercises[pageNum - 1].audio + '.mp3';
+            var oggAudio = 'audio/' + exerciseData.exercises[pageNum - 1].audio + '.ogg';
+            var audioString = '<source src="' + mp3Audio + '" type="audio/mp3"><source src="' + oggAudio + '" type="audio/ogg">';
+            $('#CD046Audio1').html(audioString);
+            $('#CD046Audio1').show();
+            $('#CD046Audio1').get(0).currentTime = 0;
+            $('#CD046Audio1').get(0).pause();
+            break;
+        case 5:
+            $('#CD046').unbind();
+            $('#CD046Audio1').get(0).pause();
+            nextPage();
+            break;
+    }
+
+
+}
+
+        $(document).ready(function() {
+            CD046();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,561 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD044 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD044" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD044",
+        "title": "Word Sort: Consonant or Vowel?",
+        "dataSet": [
+            {
+                "word": "a",
+                "icons": [
+                    "icC",
+                    "icV"
+                ],
+                "select": "2"
+            },
+            {
+                "word": "j",
+                "icons": [
+                    "icC",
+                    "icV"
+                ],
+                "select": "1"
+            },
+            {
+                "word": "b",
+                "icons": [
+                    "icC",
+                    "icV"
+                ],
+                "select": "1"
+            },
+            {
+                "word": "e",
+                "icons": [
+                    "icC",
+                    "icV"
+                ],
+                "select": "2"
+            },
+            {
+                "word": "p",
+                "icons": [
+                    "icC",
+                    "icV"
+                ],
+                "select": "1"
+            },
+            {
+                "word": "u",
+                "icons": [
+                    "icC",
+                    "icV"
+                ],
+                "select": "2"
+            },
+            {
+                "word": "h",
+                "icons": [
+                    "icC",
+                    "icV"
+                ],
+                "select": "1"
+            },
+            {
+                "word": "i",
+                "icons": [
+                    "icC",
+                    "icV"
+                ],
+                "select": "2"
+            },
+            {
+                "word": "o",
+                "icons": [
+                    "icC",
+                    "icV"
+                ],
+                "select": "2"
+            },
+            {
+                "word": "z",
+                "icons": [
+                    "icC",
+                    "icV"
+                ],
+                "select": "1"
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD044();
+        }
+
+        function CD044() {
+    var htmlString = '<table>';
+
+    for (i = 0; i < 5; i++) {
+        htmlString += '<tr>';
+
+        htmlString += '<td><div class="dotBulletNum">' + (i + 1) + '</div></td>';
+
+        var circleFlag = false;
+        var underlineFlag = false;
+        var wordString = '';
+        for (j = 0; j < exerciseData.exercises[pageNum - 1].dataSet[i].word.length; j++) {
+            var currWord = exerciseData.exercises[pageNum - 1].dataSet[i].word;
+
+            if (currWord.charAt(j) == '(' || currWord.charAt(j) == '_' || currWord.charAt(j) == '|' || currWord.charAt(j) == '/') {
+                if (currWord.charAt(j) == '|') {
+                    wordString += '</div>';
+                }
+                if (currWord.charAt(j) == '(') {
+                    wordString += '<div class="circleText circleHidden">';
+                }
+                if (currWord.charAt(j) == '_') {
+                    underlineFlag = true;
+                    wordString += '<div class="underlineText underlineHidden">';
+                }
+                if (currWord.charAt(j) == '/') {
+                    wordString += '<div class="vertLine hidden"></div>';
+                }
+
+            } else {
+                wordString += '<div class="charBlock';
+                wordString += '">' + currWord.charAt(j) + '</div>';
+            }
+        }
+        htmlString += '<td id="CD044w' + (i + 1) + '">' + wordString + '</td>';
+        for (j = 0; j < exerciseData.exercises[pageNum - 1].dataSet[i].icons.length; j++) {
+            htmlString += '<td><div id="CD044imageR' + (i + 1) + 'C' + (j + 1) + '" class="standardIcon hiddenCircle ' + exerciseData.exercises[pageNum - 1].dataSet[i].icons[j] + '"></div></td>';
+        }
+        htmlString += '</tr>';
+    }
+    htmlString += '</table>';
+    $('#CD044').html(htmlString);
+    $('#CD044').unbind();
+    $('#CD044').bind(clicker, function () {
+        CD044Play();
+    });
+    initPage();
+}
+
+        function CD044Play() {
+    var clickArray = [];
+    var clickArray2 = [];
+    var iconFirst = true;
+    if (exerciseData.exercises[pageNum - 1].iconFirst == 'false') {
+        iconFirst = false;
+    }
+    var total = 0;
+    var subClick = 0;
+    for (i = 0; i < 5; i++) {
+        subClick = 1;
+        var circUnderline = 0;
+        var vertLine = 0;
+        for (j = 0; j < exerciseData.exercises[pageNum - 1].dataSet[i].word.length; j++) {
+            var tempWord = exerciseData.exercises[pageNum - 1].dataSet[i].word;
+            var tempChar = tempWord.charAt(j);
+            if (tempChar == '_' || tempChar == '(') {
+                circUnderline = 1;
+            }
+            if (tempChar == '/') {
+                vertLine = 1;
+            }
+        }
+        subClick = subClick + circUnderline + vertLine;
+        total += subClick;
+        clickArray.push({
+            'total': total,
+            'subClick': subClick,
+            'vert': vertLine
+        });
+    }
+    console.log('clickArray:');
+    console.log(clickArray);
+    //create second click array
+    if (exerciseData.exercises[pageNum - 1].dataSet.length > 5) {
+        total++;
+        for (i = 5; i < 10; i++) {
+            subClick = 1;
+            var circUnderline = 0;
+            var vertLine = 0;
+            for (j = 0; j < exerciseData.exercises[pageNum - 1].dataSet[i].word.length; j++) {
+                var tempWord = exerciseData.exercises[pageNum - 1].dataSet[i].word;
+                var tempChar = tempWord.charAt(j);
+                if (tempChar == '_' || tempChar == '(') {
+                    circUnderline = 1;
+                }
+                if (tempChar == '/') {
+                    vertLine = 1;
+                }
+            }
+            subClick = subClick + circUnderline + vertLine;
+            total += subClick;
+            clickArray2.push({
+                'total': total,
+                'subClick': subClick,
+                'vert': vertLine
+            });
+        }
+    }
+    console.log('clickArray2:');
+    console.log(clickArray2);
+    step++;
+    if (step <= clickArray[clickArray.length - 1].total) {
+        var ds = 0;
+        while (step > clickArray[ds].total) {
+            ds++;
+        }
+
+        console.log('dataset:' + ds);
+        console.log('step+sub-total:' + ((step + clickArray[ds].subClick) - clickArray[ds].total));
+        var subStep = (step + clickArray[ds].subClick) - clickArray[ds].total;
+        if (iconFirst) {
+            if (subStep == 1) {
+                $('#CD044imageR' + (ds + 1) + 'C' + exerciseData.exercises[pageNum - 1].dataSet[ds].select).removeClass('hiddenCircle');
+            } else {
+                if (clickArray[ds].subClick < 3) {
+                    //show underlines,circles and Verts
+                    $('#CD044w' + (ds + 1) + ' .circleText').removeClass('circleHidden');
+                    $('#CD044w' + (ds + 1) + ' .underlineText').removeClass('underlineHidden');
+                    $('#CD044w' + (ds + 1) + ' .vertLine').removeClass('hidden');
+                } else {
+                    if (subStep == 2) {
+                        $('#CD044w' + (ds + 1) + ' .circleText').removeClass('circleHidden');
+                        $('#CD044w' + (ds + 1) + ' .underlineText').removeClass('underlineHidden');
+                    } else {
+                        $('#CD044w' + (ds + 1) + ' .vertLine').removeClass('hidden');
+                    }
+                }
+            }
+
+
+
+        } else {
+            if (clickArray[ds].subClick < 3) {
+                if (subStep == 1) {
+                    if (clickArray[ds].vert == '1') {
+                        $('#CD044imageR' + (ds + 1) + 'C' + exerciseData.exercises[pageNum - 1].dataSet[ds].select).removeClass('hiddenCircle');
+                    } else {
+                        $('#CD044w' + (ds + 1) + ' .circleText').removeClass('circleHidden');
+                        $('#CD044w' + (ds + 1) + ' .underlineText').removeClass('underlineHidden');
+                    }
+
+                } else {
+
+                    if (clickArray[ds].vert == '1') {
+                        $('#CD044w' + (ds + 1) + ' .vertLine').removeClass('hidden');
+                    } else {
+                        $('#CD044imageR' + (ds + 1) + 'C' + exerciseData.exercises[pageNum - 1].dataSet[ds].select).removeClass('hiddenCircle');
+                    }
+                }
+            } else {
+                if (subStep == 1) {
+                    $('#CD044w' + (ds + 1) + ' .circleText').removeClass('circleHidden');
+                    $('#CD044w' + (ds + 1) + ' .underlineText').removeClass('underlineHidden');
+                }
+                if (subStep == 2) {
+                    $('#CD044imageR' + (ds + 1) + 'C' + exerciseData.exercises[pageNum - 1].dataSet[ds].select).removeClass('hiddenCircle');
+                }
+                if (subStep == 3) {
+                    $('#CD044w' + (ds + 1) + ' .vertLine').removeClass('hidden');
+                }
+
+            }
+
+        }
+
+    } else {
+        if (clickArray2.length > 0) {
+            if (step > clickArray2[clickArray2.length - 1].total) {
+                $('#CD044').unbind();
+                nextPage();
+            } else {
+                if (step == clickArray[clickArray.length - 1].total + 1) {
+                    //rebuild table
+                    var htmlString = '<table>';
+
+                    for (i = 5; i < 10; i++) {
+                        htmlString += '<tr>';
+
+                        htmlString += '<td><div class="dotBulletNum">' + (i + 1) + '</div></td>';
+
+                        var circleFlag = false;
+                        var underlineFlag = false;
+                        var wordString = '';
+                        for (j = 0; j < exerciseData.exercises[pageNum - 1].dataSet[i].word.length; j++) {
+                            var currWord = exerciseData.exercises[pageNum - 1].dataSet[i].word;
+
+                            if (currWord.charAt(j) == '(' || currWord.charAt(j) == '_' || currWord.charAt(j) == '|' || currWord.charAt(j) == '/') {
+                                if (currWord.charAt(j) == '|') {
+                                    wordString += '</div>';
+                                }
+                                if (currWord.charAt(j) == '(') {
+                                    wordString += '<div class="circleText circleHidden">';
+                                }
+                                if (currWord.charAt(j) == '_') {
+                                    underlineFlag = true;
+                                    wordString += '<div class="underlineText underlineHidden">';
+                                }
+                                if (currWord.charAt(j) == '/') {
+                                    wordString += '<div class="vertLine hidden"></div>';
+                                }
+
+                            } else {
+                                wordString += '<div class="charBlock';
+                                wordString += '">' + currWord.charAt(j) + '</div>';
+                            }
+                        }
+                        htmlString += '<td id="CD044w' + (i + 1) + '">' + wordString + '</td>';
+                        for (j = 0; j < exerciseData.exercises[pageNum - 1].dataSet[i].icons.length; j++) {
+                            htmlString += '<td><div id="CD044imageR' + (i + 1) + 'C' + (j + 1) + '" class="standardIcon hiddenCircle ' + exerciseData.exercises[pageNum - 1].dataSet[i].icons[j] + '"></div></td>';
+                        }
+                        htmlString += '</tr>';
+                    }
+                    htmlString += '</table>';
+                    $('#CD044').html(htmlString);
+                } else {
+                    //step through table ///////////////////////////////////////////
+                    var ds = 0;
+                    while (step > clickArray2[ds].total) {
+                        ds++;
+                    }
+
+                    console.log('dataset:' + ds);
+                    var subStep = (step + clickArray2[ds].subClick) - clickArray2[ds].total;
+                    console.log('subStep:' + subStep);
+
+
+                    if (iconFirst) {
+                        if (subStep == 1) {
+                            $('#CD044imageR' + (ds + 6) + 'C' + exerciseData.exercises[pageNum - 1].dataSet[ds + 5].select).removeClass('hiddenCircle');
+                        } else {
+                            if (clickArray2[ds].subClick < 3) {
+                                //show underlines,circles and Verts
+                                $('#CD044w' + (ds + 6) + ' .circleText').removeClass('circleHidden');
+                                $('#CD044w' + (ds + 6) + ' .underlineText').removeClass('underlineHidden');
+                                $('#CD044w' + (ds + 6) + ' .vertLine').removeClass('hidden');
+                            } else {
+                                if (subStep == 2) {
+                                    $('#CD044w' + (ds + 6) + ' .circleText').removeClass('circleHidden');
+                                    $('#CD044w' + (ds + 6) + ' .underlineText').removeClass('underlineHidden');
+                                } else {
+                                    $('#CD044w' + (ds + 6) + ' .vertLine').removeClass('hidden');
+                                }
+                            }
+                        }
+
+
+
+                    } else {
+                        if (clickArray2[ds].subClick < 3) {
+                            if (subStep == 1) {
+                                if (clickArray2[ds].vert == '1') {
+                                    $('#CD044imageR' + (ds + 6) + 'C' + exerciseData.exercises[pageNum - 1].dataSet[ds + 5].select).removeClass('hiddenCircle');
+                                } else {
+                                    $('#CD044w' + (ds + 6) + ' .circleText').removeClass('circleHidden');
+                                    $('#CD044w' + (ds + 6) + ' .underlineText').removeClass('underlineHidden');
+                                }
+
+                            } else {
+
+                                if (clickArray2[ds].vert == '1') {
+                                    $('#CD044w' + (ds + 6) + ' .vertLine').removeClass('hidden');
+                                } else {
+                                    $('#CD044imageR' + (ds + 6) + 'C' + exerciseData.exercises[pageNum - 1].dataSet[ds + 5].select).removeClass('hiddenCircle');
+                                }
+                            }
+                        } else {
+                            if (subStep == 1) {
+                                $('#CD044w' + (ds + 6) + ' .circleText').removeClass('circleHidden');
+                                $('#CD044w' + (ds + 6) + ' .underlineText').removeClass('underlineHidden');
+                            }
+                            if (subStep == 2) {
+                                $('#CD044imageR' + (ds + 6) + 'C' + exerciseData.exercises[pageNum - 1].dataSet[ds + 5].select).removeClass('hiddenCircle');
+                            }
+                            if (subStep == 3) {
+                                $('#CD044w' + (ds + 6) + ' .vertLine').removeClass('hidden');
+                            }
+
+                        }
+
+                    }
+                    ////////////////////////////////////////////////////////////////
+                }
+            }
+        } else {
+            $('#CD044').unbind();
+            nextPage();
+        }
+
+    }
+}
+
+        $(document).ready(function() {
+            CD044();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unscramble This - Standalone Widget</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        #widget-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 800px;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #header {
+            background: linear-gradient(90deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        #header p {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        #CD023 {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            cursor: pointer;
+        }
+
+        .fullScreen {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        /* Letter Tiles */
+        .letterTileBack {
+            background: linear-gradient(145deg, #667eea, #764ba2);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            display: inline-block;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .letterTile {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            font-size: 3em;
+            font-weight: bold;
+            min-width: 80px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vowel {
+            color: #e74c3c;
+        }
+
+        .letter {
+            color: #2c3e50;
+        }
+
+        /* Icon Display */
+        .blockIcon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8em;
+            text-align: center;
+        }
+
+        /* Icon Definitions (using Unicode characters as placeholders) */
+        .icSit::before { content: '🪑'; }
+        .icMap::before { content: '🗺️'; }
+        .icHat::before { content: '🎩'; }
+        .icCod::before { content: '🐟'; }
+        .icThermometer::before { content: '🌡️'; }
+        .icScissors::before { content: '✂️'; }
+        .icRug::before { content: '🧺'; }
+        .icPot::before { content: '🍲'; }
+        .icRap::before { content: '🎤'; }
+        .icPit::before { content: '🕳️'; }
+        .icHim::before { content: '👤'; }
+        .icCot::before { content: '🛏️'; }
+        .icFit::before { content: '💪'; }
+        .icHop::before { content: '🐰'; }
+        .icGumballs::before { content: '🍬'; }
+
+        /* Instructions */
+        #instructions {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        #progress {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        /* Completion Message */
+        #completion {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        #completion h2 {
+            color: #4CAF50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #completion button {
+            background: linear-gradient(90deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #completion button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="widget-container">
+        <div id="header">
+            <h1>🎯 Unscramble This!</h1>
+            <p>Click to arrange the letters in the correct order</p>
+        </div>
+
+        <div id="instructions">
+            Click anywhere to start unscrambling the word
+        </div>
+
+        <div id="CD023">
+            <div id="progress">Word 1 of 5</div>
+        </div>
+
+        <div id="completion">
+            <h2>🎉 Great Job!</h2>
+            <p>You've completed all the words!</p>
+            <button onclick="resetWidget()">Play Again</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Sample Data - Mimics the JSON structure from Countdown
+        var exerciseData = {
+            exercises: [{
+                pageID: "CD023",
+                title: "Unscramble This Sample",
+                dataSet: [
+                    {
+                        icon: "icSit",
+                        letters: ["s", "i", "t"],
+                        preorder: ["2", "1", "3"]
+                    },
+                    {
+                        icon: "icMap",
+                        letters: ["m", "a", "p"],
+                        preorder: ["2", "1", "3"]
+                    },
+                    {
+                        icon: "icHat",
+                        letters: ["h", "a", "t"],
+                        preorder: ["1", "3", "2"]
+                    },
+                    {
+                        icon: "icPot",
+                        letters: ["p", "o", "t"],
+                        preorder: ["3", "1", "2"]
+                    },
+                    {
+                        icon: "icHop",
+                        letters: ["h", "o", "p"],
+                        preorder: ["1", "3", "2"]
+                    }
+                ]
+            }]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var currentItem = 0;
+        var CD023ClickArray = [];
+        var CD023Positions = [];
+        var CD023FinalPositions = [];
+        var CD023WidthEms = 0;
+        var CD023CenterEms = 0;
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function CD023() {
+            step = 0;
+            currentItem = 0;
+            CD023ClickArray = [];
+
+            // Calculate click array
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+                var clickVal = 0;
+                if (i > 0) {
+                    clickVal = CD023ClickArray[CD023ClickArray.length - 1];
+                }
+                clickVal += exerciseData.exercises[pageNum - 1].dataSet[i].letters.length;
+                clickVal += 1;
+                CD023ClickArray.push(clickVal);
+            }
+
+            drawWord(0);
+            updateProgress();
+        }
+
+        function drawWord(itemIndex) {
+            CD023Positions = [];
+            CD023FinalPositions = [];
+            CD023WidthEms = $('#CD023').width() / parseFloat($('body').css('font-size'));
+
+            var letterData = exerciseData.exercises[pageNum - 1].dataSet[itemIndex];
+            CD023CenterEms = CD023WidthEms / 2;
+            var letterWidth = 9;
+            var wordWidth = letterWidth * letterData.letters.length;
+            var startLetters = CD023CenterEms - wordWidth / 2;
+
+            for (i = 0; i < letterData.letters.length; i++) {
+                CD023Positions.push(startLetters + letterWidth * i * 0.95);
+            }
+
+            var htmlString = '';
+            htmlString += '<div id="CD023Tiles" class="fullScreen">';
+
+            for (i = 0; i < letterData.letters.length; i++) {
+                htmlString += '<div id="CD023LetterTile' + (i + 1) + '" class="letterTileBack">';
+                htmlString += '<div class="letterTile">' + checkLetter(letterData.letters[i]) + '</div>';
+                htmlString += '</div>';
+            }
+
+            htmlString += '</div>';
+            htmlString += '<div id="CD023image" class="blockIcon ' + letterData.icon + '"></div>';
+
+            $('#CD023').html(htmlString);
+            $('#CD023').append('<div id="progress">Word ' + (itemIndex + 1) + ' of ' + exerciseData.exercises[pageNum - 1].dataSet.length + '</div>');
+
+            $('#CD023image').css('font-size', '1.2em');
+            $('#CD023image').css('margin-top', '7.5em');
+
+            var tileHeight = 4;
+            var fontSize = parseFloat($('body').css('font-size'));
+
+            for (i = 0; i < letterData.letters.length; i++) {
+                var $tile = $('#CD023LetterTile' + (i + 1));
+                $tile.css('position', 'absolute');
+                $tile.css('top', (tileHeight * (letterData.preorder[i] - 1) + 4) + 'em');
+                $tile.css('left', (CD023Positions[letterData.preorder[i] - 1] + 10) + 'em');
+            }
+
+            $('#CD023').unbind();
+            $('#CD023').on('click', function() {
+                CD023Play();
+            });
+        }
+
+        function CD023Play() {
+            step++;
+
+            var item = currentItem;
+            while (item < CD023ClickArray.length && step > CD023ClickArray[item]) {
+                item++;
+            }
+
+            if (step >= CD023ClickArray[CD023ClickArray.length - 1]) {
+                // All words completed
+                showCompletion();
+            } else if (step == CD023ClickArray[item]) {
+                // Move to next word
+                currentItem = item + 1;
+                drawWord(currentItem);
+                updateProgress();
+            } else {
+                // Animate current letter
+                var letterData = exerciseData.exercises[pageNum - 1].dataSet[currentItem];
+                CD023FinalPositions = [];
+                var centerEms = ($('#CD023').width() / parseFloat($('body').css('font-size'))) / 2;
+                var letterWidth = 6.75;
+                var wordWidth = letterWidth * letterData.letters.length;
+                var startWidth = centerEms - wordWidth / 2;
+
+                for (i = 0; i < letterData.letters.length; i++) {
+                    CD023FinalPositions.push(startWidth + letterWidth * i);
+                }
+
+                var baseStep = currentItem > 0 ? CD023ClickArray[currentItem - 1] : 0;
+                var tileToMove = step - baseStep - 1;
+
+                var newTop = 28;
+                var $tile = $('#CD023LetterTile' + (tileToMove + 1));
+                $tile.css('transition', 'all 1s ease-in-out');
+                $tile.css('top', newTop + 'em');
+                $tile.css('left', CD023FinalPositions[tileToMove] + 'em');
+            }
+        }
+
+        function updateProgress() {
+            var current = currentItem + 1;
+            var total = exerciseData.exercises[pageNum - 1].dataSet.length;
+            $('#progress').text('Word ' + current + ' of ' + total);
+        }
+
+        function showCompletion() {
+            $('#completion').fadeIn(500);
+        }
+
+        function resetWidget() {
+            $('#completion').fadeOut(300);
+            setTimeout(function() {
+                CD023();
+            }, 300);
+        }
+
+        // Initialize when page loads
+        $(document).ready(function() {
+            CD023();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD020 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD020" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD020",
+        "title": "Phrase Reading",
+        "cycles": 1,
+        "phrases": [
+            {
+                "word1": "cut",
+                "hw1": "false",
+                "word2": "the",
+                "hw2": "true",
+                "word3": "ham",
+                "hw3": "false"
+            },
+            {
+                "word1": "hug",
+                "hw1": "false",
+                "word2": "my",
+                "hw2": "true",
+                "word3": "dog",
+                "hw3": "false"
+            },
+            {
+                "word1": "dig",
+                "hw1": "false",
+                "word2": "in",
+                "hw2": "true",
+                "word3": "mud",
+                "hw3": "false"
+            },
+            {
+                "word1": "here",
+                "hw1": "true",
+                "word2": "I",
+                "hw2": "true",
+                "word3": "am",
+                "hw3": "true"
+            },
+            {
+                "word1": "not",
+                "hw1": "false",
+                "word2": "for",
+                "hw2": "true",
+                "word3": "him",
+                "hw3": "false"
+            },
+            {
+                "word1": "I",
+                "hw1": "true",
+                "word2": "am",
+                "hw2": "true",
+                "word3": "sad",
+                "hw3": "false"
+            },
+            {
+                "word1": "Tom",
+                "hw1": "false",
+                "word2": "is",
+                "hw2": "true",
+                "word3": "mad",
+                "hw3": "false"
+            },
+            {
+                "word1": "a",
+                "hw1": "true",
+                "word2": "hot",
+                "hw2": "false",
+                "word3": "mug",
+                "hw3": "false"
+            },
+            {
+                "word1": "in",
+                "hw1": "true",
+                "word2": "the",
+                "hw2": "true",
+                "word3": "pan",
+                "hw3": "false"
+            },
+            {
+                "word1": "got",
+                "hw1": "false",
+                "word2": "my",
+                "hw2": "true",
+                "word3": "map",
+                "hw3": "false"
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD020();
+        }
+
+        function CD020() {
+    var htmlString = '';
+
+    htmlString += '<div id="CD020HeartWord" class="heartWord">';
+
+    htmlString += '<div id="CD020HW' + 1 + '" class="heartWordInline"><span id="CD020HWText' + 1 + '" class="heartWordHeartText heartWordHidden';
+    if (exerciseData.exercises[pageNum - 1].phrases[0].hw1 == "true") {
+        htmlString += ' heartWordHeart';
+    }
+    htmlString += '">' + exerciseData.exercises[pageNum - 1].phrases[0].word1 + '</span></div>';
+
+    htmlString += '<div id="CD020HW' + 2 + '" class="heartWordInline"><span id="CD020HWText' + 2 + '" class="heartWordHeartText heartWordHidden';
+    if (exerciseData.exercises[pageNum - 1].phrases[0].hw2 == "true") {
+        htmlString += ' heartWordHeart';
+    }
+    htmlString += '">' + exerciseData.exercises[pageNum - 1].phrases[0].word2 + '</span></div>';
+
+    htmlString += '<div id="CD020HW' + 3 + '" class="heartWordInline"><span id="CD020HWText' + 3 + '" class="heartWordHeartText heartWordHidden';
+    if (exerciseData.exercises[pageNum - 1].phrases[0].hw3 == "true") {
+        htmlString += ' heartWordHeart';
+    }
+    htmlString += '">' + exerciseData.exercises[pageNum - 1].phrases[0].word3 + '</span></div>';
+
+
+    htmlString += '</div>';
+
+    $('#CD020').html(htmlString);
+
+    $('#CD020 .heartWordHeartText').css('transition', 'all .5s 0s');
+    //$('#CD020HWText1').removeClass('heartWordHidden');
+    $('#CD020').unbind();
+    $('#CD020').bind(clicker, function () {
+        CD020Play();
+    });
+    initPage();
+}
+
+        function CD020Play() {
+    if (step == 0) {
+        step++;
+    }
+    step++;
+    var totalCycles = exerciseData.exercises[pageNum - 1].cycles * 4 * exerciseData.exercises[pageNum - 1].phrases.length;
+    var words = 3
+    var currentCycle = Math.ceil(step / 4);
+
+    if (step > totalCycles) {
+        $('#CD020').unbind();
+        nextPage();
+    } else {
+        var subStep = step;
+        if (subStep > words) {
+            subStep -= (words + 1) * (currentCycle - 1);
+        }
+        if (step % 4 == 1) {
+            var currentPhrase = (step - 1) / 4;
+            var htmlString = '';
+
+            htmlString += '<div id="CD020HeartWord" class="heartWord">';
+
+            htmlString += '<div id="CD020HW' + 1 + '" class="heartWordInline"><span id="CD020HWText' + 1 + '" class="heartWordHeartText heartWordHidden';
+            if (exerciseData.exercises[pageNum - 1].phrases[currentPhrase].hw1 == "true") {
+                htmlString += ' heartWordHeart';
+            }
+            htmlString += '">' + exerciseData.exercises[pageNum - 1].phrases[currentPhrase].word1 + '</span></div>';
+
+            htmlString += '<div id="CD020HW' + 2 + '" class="heartWordInline"><span id="CD020HWText' + 2 + '" class="heartWordHeartText heartWordHidden';
+            if (exerciseData.exercises[pageNum - 1].phrases[currentPhrase].hw2 == "true") {
+                htmlString += ' heartWordHeart';
+            }
+            htmlString += '">' + exerciseData.exercises[pageNum - 1].phrases[currentPhrase].word2 + '</span></div>';
+
+            htmlString += '<div id="CD020HW' + 3 + '" class="heartWordInline"><span id="CD020HWText' + 3 + '" class="heartWordHeartText heartWordHidden';
+            if (exerciseData.exercises[pageNum - 1].phrases[currentPhrase].hw3 == "true") {
+                htmlString += ' heartWordHeart';
+            }
+            htmlString += '">' + exerciseData.exercises[pageNum - 1].phrases[currentPhrase].word3 + '</span></div>';
+
+
+            htmlString += '</div>';
+
+            $('#CD020').html(htmlString);
+
+            $('#CD020 .heartWordHeartText').css('transition', 'all .5s 0s');
+            //$('#CD020HWText1').removeClass('heartWordHidden');
+            $('#CD020').unbind();
+            $('#CD020').bind(clicker, function () {
+                CD020Play();
+            });
+
+
+
+            $('#CD020 .heartWordHeartText').addClass('heartWordHidden');
+        } else {
+            $('#CD020HWText' + (subStep - 1)).removeClass('heartWordHidden');
+        }
+
+
+    }
+}
+
+        $(document).ready(function() {
+            CD020();
+        });
+    </script>
+</body>
+</html>

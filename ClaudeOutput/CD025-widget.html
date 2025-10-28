@@ -1,0 +1,490 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD025 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD025" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD025",
+        "title": "Add That Sound",
+        "dataSet": [
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "order": [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD025();
+        }
+
+        function CD025() {
+
+    var htmlString = '';
+    htmlString += '<div id="CD025ColorBlock" class="top5">';
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].colors.length; i++) {
+        htmlString += '<div id="CD025ColorTile' + (i + 1) + '" class="letterTileBack"><div class="letterTile letterTileExtraLarge ';
+        htmlString += 'letterTile' + exerciseData.exercises[pageNum - 1].dataSet[0].colors[i] + '"></div></div>';
+    }
+    htmlString += '</div>';
+
+
+
+    $('#CD025').html(htmlString);
+
+    $('#CD025 .letterTileBack').css('opacity', '0');
+    $('#CD025 .letterTileBack').css('transition', 'all .5s 0s');
+    $('#CD025').unbind();
+    $('#CD025').bind(clicker, function () {
+        CD025Play();
+    });
+    initPage();
+}
+
+        function CD025Play() {
+
+    var clickArray = [];
+    var totalClicks = 0; //negative one offset for first item
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+        totalClicks += exerciseData.exercises[pageNum - 1].dataSet[i].colors.length + 1;
+        clickArray.push(totalClicks);
+    }
+
+    if (step == 0) {
+        step++;
+    }
+    step++;
+
+
+
+    if (step > totalClicks) {
+        nextPage();
+    } else {
+        var ds = 0;
+        while (step > clickArray[ds]) {
+            ds++;
+        }
+        var subClick = (step - clickArray[ds]) + (exerciseData.exercises[pageNum - 1].dataSet[ds].colors.length);
+        if (subClick == 0) {
+            var htmlString = '';
+            htmlString += '<div id="CD025ColorBlock" class="top5">';
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[ds].colors.length; i++) {
+                htmlString += '<div id="CD025ColorTile' + (i + 1) + '" class="letterTileBack"><div class="letterTile letterTileExtraLarge ';
+                htmlString += 'letterTile' + exerciseData.exercises[pageNum - 1].dataSet[ds].colors[i] + '"></div></div>';
+            }
+            htmlString += '</div>';
+
+            $('#CD025').html(htmlString);
+
+            $('#CD025 .letterTileBack').css('opacity', '0');
+            $('#CD025 .letterTileBack').css('transition', 'all .5s 0s');
+            $('#CD025').unbind();
+            $('#CD025').bind(clicker, function () {
+                CD025Play();
+            });
+        } else {
+            $('#CD025ColorTile' + exerciseData.exercises[pageNum - 1].dataSet[ds].order[subClick - 1]).css('opacity', '1');
+        }
+    }
+}
+
+        $(document).ready(function() {
+            CD025();
+        });
+    </script>
+</body>
+</html>

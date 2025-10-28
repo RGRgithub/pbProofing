@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Templates - Widget Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            padding: 30px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .info-box h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .info-box p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+            background: #fff;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .widget-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .widget-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            padding: 20px;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .widget-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .widget-id {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .widget-name {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .widget-status {
+            font-size: 0.9em;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .docs-link {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 5px;
+        }
+
+        .docs-link:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Countdown Template Widgets</h1>
+            <p>All 46 Templates Extracted as Standalone HTML Files</p>
+        </header>
+
+        <div class="info-box">
+            <h2>About These Widgets</h2>
+            <p><strong>These are exact extractions</strong> from the Countdown reading curriculum application. Each widget contains:</p>
+            <ul style="margin-left: 40px; margin-top: 10px; line-height: 1.8;">
+                <li>Original HTML structure from indexDRUPAL.html</li>
+                <li>Exact JavaScript functions from exercises.js</li>
+                <li>Real exercise data from JSON files (where available)</li>
+                <li>Minimal CSS for standalone operation</li>
+            </ul>
+            <p style="margin-top: 15px;"><strong>How to use:</strong> Click any widget below to open it in a new tab. Click anywhere in the widget to advance through the activity.</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">46</div>
+                <div class="stat-label">Total Templates</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">39</div>
+                <div class="stat-label">With Real Data</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7</div>
+                <div class="stat-label">With Placeholders</div>
+            </div>
+        </div>
+
+        <div class="widget-grid">
+            <a href="CD001-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD001</div>
+                <div class="widget-name">Lesson Menu</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD002-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD002</div>
+                <div class="widget-name">Question/Response</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD003-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD003</div>
+                <div class="widget-name">Image Display</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD004-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD004</div>
+                <div class="widget-name">Dual Images</div>
+                <div class="widget-status">⚠ Placeholder</div>
+            </a>
+
+            <a href="CD005-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD005</div>
+                <div class="widget-name">Concept Sort</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD006-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD006</div>
+                <div class="widget-name">Image Compare</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD007-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD007</div>
+                <div class="widget-name">Heart Words</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD008-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD008</div>
+                <div class="widget-name">Name That Sound</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD009-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD009</div>
+                <div class="widget-name">Icon Letter Match</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD010-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD010</div>
+                <div class="widget-name">Sort Activity</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD011-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD011</div>
+                <div class="widget-name">Word Building</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD012-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD012</div>
+                <div class="widget-name">Letter Match</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD013-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD013</div>
+                <div class="widget-name">Which Letter?</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD014-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD014</div>
+                <div class="widget-name">Letter Tiles</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD015-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD015</div>
+                <div class="widget-name">Build a Word</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD016-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD016</div>
+                <div class="widget-name">Icon Match</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD017-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD017</div>
+                <div class="widget-name">Heart Word Display</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD018-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD018</div>
+                <div class="widget-name">Blending</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD019-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD019</div>
+                <div class="widget-name">Sound Match</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD020-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD020</div>
+                <div class="widget-name">Word Sort</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD021-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD021</div>
+                <div class="widget-name">Reading Practice</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD022-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD022</div>
+                <div class="widget-name">Pattern Match</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD023-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD023</div>
+                <div class="widget-name">Unscramble This</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD024-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD024</div>
+                <div class="widget-name">Letter Choice</div>
+                <div class="widget-status">⚠ Placeholder</div>
+            </a>
+
+            <a href="CD025-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD025</div>
+                <div class="widget-name">Word Completion</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD026-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD026</div>
+                <div class="widget-name">Template 26</div>
+                <div class="widget-status">⚠ Placeholder</div>
+            </a>
+
+            <a href="CD027-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD027</div>
+                <div class="widget-name">Names vs Sounds</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD028-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD028</div>
+                <div class="widget-name">Template 28</div>
+                <div class="widget-status">⚠ Placeholder</div>
+            </a>
+
+            <a href="CD029-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD029</div>
+                <div class="widget-name">Template 29</div>
+                <div class="widget-status">⚠ Placeholder</div>
+            </a>
+
+            <a href="CD030-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD030</div>
+                <div class="widget-name">Template 30</div>
+                <div class="widget-status">⚠ Placeholder</div>
+            </a>
+
+            <a href="CD031-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD031</div>
+                <div class="widget-name">Template 31</div>
+                <div class="widget-status">⚠ Placeholder</div>
+            </a>
+
+            <a href="CD032-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD032</div>
+                <div class="widget-name">Vowel Teams</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD033-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD033</div>
+                <div class="widget-name">Split Screen</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD034-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD034</div>
+                <div class="widget-name">Sentences</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD035-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD035</div>
+                <div class="widget-name">Word Lists</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD036-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD036</div>
+                <div class="widget-name">Handwriting</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD037-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD037</div>
+                <div class="widget-name">Progression</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD038-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD038</div>
+                <div class="widget-name">Multi-Choice</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD039-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD039</div>
+                <div class="widget-name">Syllables</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD040-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD040</div>
+                <div class="widget-name">Letter Sounds</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD041-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD041</div>
+                <div class="widget-name">Word Families</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD042-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD042</div>
+                <div class="widget-name">Affixes</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD043-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD043</div>
+                <div class="widget-name">Compound Words</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD044-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD044</div>
+                <div class="widget-name">Word Sort Advanced</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD045-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD045</div>
+                <div class="widget-name">Spell It!</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+
+            <a href="CD046-widget.html" target="_blank" class="widget-card">
+                <div class="widget-id">CD046</div>
+                <div class="widget-name">Practice Grid</div>
+                <div class="widget-status">✓ Real Data</div>
+            </a>
+        </div>
+
+        <footer>
+            <h3 style="margin-bottom: 20px;">Documentation</h3>
+            <a href="EXACT-WIDGETS-README.md" class="docs-link">Exact Widgets README</a>
+            <a href="TEMPLATE_DOCUMENTATION.md" class="docs-link">Template Documentation</a>
+            <a href="generate_all_widgets.py" class="docs-link">Generation Script</a>
+            <p style="margin-top: 20px; opacity: 0.7;">
+                Extracted from: d:\Dropbox\OLT\~Drupal Versions\drp-countdownTX\<br>
+                Generated: 2025 | All widgets reference original icon files
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

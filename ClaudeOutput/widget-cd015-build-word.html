@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build a Word - Standalone Widget</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        #widget-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 800px;
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #header {
+            background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        #header p {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        #CD015 {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            padding: 40px;
+        }
+
+        .question-container {
+            text-align: center;
+        }
+
+        .blockIcon {
+            font-size: 8em;
+            margin-bottom: 30px;
+        }
+
+        .letter-tiles-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .letterTile {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            font-size: 3em;
+            font-weight: bold;
+            min-width: 90px;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 4px solid transparent;
+        }
+
+        .letterTile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .letterTile.Blue {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .letterTile.Red {
+            background: linear-gradient(145deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .letterTile.Green {
+            background: linear-gradient(145deg, #27ae60, #229954);
+            color: white;
+        }
+
+        .letterTile.revealed {
+            animation: revealLetter 0.5s;
+        }
+
+        @keyframes revealLetter {
+            0% {
+                transform: scale(0) rotateY(180deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2) rotateY(90deg);
+            }
+            100% {
+                transform: scale(1) rotateY(0deg);
+                opacity: 1;
+            }
+        }
+
+        .vowel {
+            color: inherit;
+        }
+
+        .letter {
+            color: inherit;
+        }
+
+        #instructions {
+            font-size: 1.5em;
+            color: #7f8c8d;
+            margin: 20px 0;
+        }
+
+        #progress {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #f5576c;
+        }
+
+        .color-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+        }
+
+        .legend-color.Blue {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+        }
+
+        .legend-color.Red {
+            background: linear-gradient(145deg, #e74c3c, #c0392b);
+        }
+
+        .legend-color.Green {
+            background: linear-gradient(145deg, #27ae60, #229954);
+        }
+
+        #completion {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+            min-width: 400px;
+        }
+
+        #completion h2 {
+            color: #27ae60;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #completion button {
+            background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 20px;
+        }
+
+        #completion button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Icon Definitions */
+        .icNap::before { content: '😴'; }
+        .icPeas::before { content: '🫛'; }
+        .icMix::before { content: '🥄'; }
+        .icDog::before { content: '🐕'; }
+        .icMap::before { content: '🗺️'; }
+        .icBed::before { content: '🛏️'; }
+        .icSun::before { content: '☀️'; }
+        .icWin::before { content: '🏆'; }
+        .icCup::before { content: '☕'; }
+        .icAnt::before { content: '🐜'; }
+    </style>
+</head>
+<body>
+    <div id="widget-container">
+        <div id="header">
+            <h1>🔤 Build a Word</h1>
+            <p>Click to reveal each letter and build the word</p>
+        </div>
+
+        <div class="color-legend">
+            <div class="legend-item">
+                <div class="legend-color Blue"></div>
+                <span>Beginning</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color Red"></div>
+                <span>Middle</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color Green"></div>
+                <span>End</span>
+            </div>
+        </div>
+
+        <div id="CD015">
+            <div id="progress">Word 1 of 10</div>
+            <div class="question-container">
+                <div id="icon" class="blockIcon"></div>
+                <div id="instructions">Click on each tile to build the word</div>
+                <div class="letter-tiles-container" id="tiles"></div>
+            </div>
+        </div>
+
+        <div id="completion">
+            <h2>🎉 Excellent Work!</h2>
+            <p>You've built all the words!</p>
+            <button onclick="resetWidget()">Play Again</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Sample Data
+        var exerciseData = {
+            exercises: [{
+                pageID: "CD015",
+                title: "Build a Word Sample",
+                dataSet: [
+                    {
+                        icon: "icNap",
+                        colors: ["Blue", "Red", "Green"],
+                        letters: ["n", "a", "p"]
+                    },
+                    {
+                        icon: "icPeas",
+                        colors: ["Blue", "Red", "Green"],
+                        letters: ["p", "o", "d"]
+                    },
+                    {
+                        icon: "icMix",
+                        colors: ["Blue", "Red", "Green"],
+                        letters: ["m", "i", "x"]
+                    },
+                    {
+                        icon: "icDog",
+                        colors: ["Blue", "Red", "Green"],
+                        letters: ["d", "o", "g"]
+                    },
+                    {
+                        icon: "icMap",
+                        colors: ["Blue", "Red", "Green"],
+                        letters: ["m", "a", "p"]
+                    },
+                    {
+                        icon: "icBed",
+                        colors: ["Blue", "Red", "Green"],
+                        letters: ["b", "e", "d"]
+                    },
+                    {
+                        icon: "icSun",
+                        colors: ["Blue", "Red", "Green"],
+                        letters: ["s", "u", "n"]
+                    },
+                    {
+                        icon: "icWin",
+                        colors: ["Blue", "Red", "Green"],
+                        letters: ["w", "i", "n"]
+                    },
+                    {
+                        icon: "icCup",
+                        colors: ["Blue", "Red", "Green"],
+                        letters: ["c", "u", "p"]
+                    },
+                    {
+                        icon: "icAnt",
+                        colors: ["Blue", "Red", "Green"],
+                        letters: ["a", "n", "t"]
+                    }
+                ]
+            }]
+        };
+
+        var pageNum = 1;
+        var currentWord = 0;
+        var currentLetter = 0;
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function CD015() {
+            currentWord = 0;
+            showWord();
+        }
+
+        function showWord() {
+            if (currentWord >= exerciseData.exercises[pageNum - 1].dataSet.length) {
+                showCompletion();
+                return;
+            }
+
+            currentLetter = 0;
+            var data = exerciseData.exercises[pageNum - 1].dataSet[currentWord];
+
+            // Update progress
+            $('#progress').text('Word ' + (currentWord + 1) + ' of ' + exerciseData.exercises[pageNum - 1].dataSet.length);
+
+            // Update icon
+            $('#icon').attr('class', 'blockIcon ' + data.icon);
+
+            // Build tiles (initially hidden)
+            var tilesHTML = '';
+            for (var i = 0; i < data.letters.length; i++) {
+                tilesHTML += '<div class="letterTile ' + data.colors[i] + '" data-index="' + i + '" onclick="revealLetter(' + i + ')">';
+                tilesHTML += '<span style="visibility: hidden;">' + checkLetter(data.letters[i]) + '</span>';
+                tilesHTML += '</div>';
+            }
+            $('#tiles').html(tilesHTML);
+        }
+
+        function revealLetter(index) {
+            if (index !== currentLetter) {
+                // Must reveal in order
+                return;
+            }
+
+            var data = exerciseData.exercises[pageNum - 1].dataSet[currentWord];
+            var $tile = $('.letterTile[data-index="' + index + '"]');
+
+            // Reveal the letter
+            $tile.find('span').css('visibility', 'visible');
+            $tile.addClass('revealed');
+
+            currentLetter++;
+
+            // If all letters revealed, move to next word after delay
+            if (currentLetter >= data.letters.length) {
+                setTimeout(function() {
+                    currentWord++;
+                    showWord();
+                }, 1500);
+            }
+        }
+
+        function showCompletion() {
+            $('#completion').fadeIn(500);
+        }
+
+        function resetWidget() {
+            $('#completion').fadeOut(300);
+            setTimeout(function() {
+                CD015();
+            }, 300);
+        }
+
+        // Initialize when page loads
+        $(document).ready(function() {
+            CD015();
+        });
+    </script>
+</body>
+</html>

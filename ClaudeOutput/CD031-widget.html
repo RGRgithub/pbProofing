@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD031 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD031" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD031",
+        "title": "Template CD031",
+        "dataSet": []
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD031();
+        }
+
+        function CD031() {
+    $('#nextButton').fadeOut(100);
+    var htmlString = '';
+    //create icons with audio
+    htmlString += '<div id="CD031IconBlock1" class="fullScreen">';
+    htmlString += '<div id="CD031Icon1" class="standardIcon fullScreenIcon"></div>';
+    var mp3Audio1 = 'audio/' + exerciseData.exercises[pageNum - 1].audio1 + '.mp3';
+    var oggAudio1 = 'audio/' + exerciseData.exercises[pageNum - 1].audio1 + '.ogg';
+    htmlString += '<audio id="CD031Audio1" class="audio" controls controlsList="nodownload">';
+    htmlString += '<source src="' + mp3Audio1 + '" type="audio/mp3">';
+    htmlString += '<source src="' + oggAudio1 + '" type="audio/ogg">';
+    htmlString += '</audio>';
+    //htmlString += '<div id="CD031Play1" class="playButton">PLAY</div>';
+    htmlString += '</div>';
+    htmlString += '<div id="CD031IconBlock2" class="fullScreen hiddenBlock">';
+    htmlString += '<div id="CD031Icon2" class="standardIcon fullScreenIcon"></div>';
+    var mp3Audio2 = 'audio/' + exerciseData.exercises[pageNum - 1].audio2 + '.mp3';
+    var oggAudio2 = 'audio/' + exerciseData.exercises[pageNum - 1].audio2 + '.ogg';
+    htmlString += '<video id="CD031Audio2" class="audio" controls controlsList="nodownload">';
+    htmlString += '<source src="' + mp3Audio2 + '" type="audio/mp3">';
+    htmlString += '<source src="' + oggAudio2 + '" type="audio/ogg">';
+    htmlString += '</video>';
+    //htmlString += '<div id="CD031Play1" class="playButton">PLAY</div>';
+    htmlString += '</div>';
+
+    htmlString += '<div id="CD031VideoBlock" class="fullScreen hiddenBlock">';
+    var mp4Video = 'video/' + exerciseData.exercises[pageNum - 1].video + '.mp4';
+    var oggVideo = 'video/' + exerciseData.exercises[pageNum - 1].video + '.ogg';
+    htmlString += '<video id="CD031Vid" class="video" controls controlsList="nodownload">';
+    htmlString += '<source src="' + mp4Video + '" type="video/mp4">';
+    htmlString += '<source src="' + oggVideo + '" type="video/ogg">';
+    htmlString += '</video>';
+
+    htmlString += '</div>';
+    htmlString += '<div id="CD031Next" class="nextButton">NEXT</div>';
+
+    $('#CD031').html(htmlString);
+    $('#CD031Audio1').hide();
+    $('#CD031Audio2').hide();
+    controlsList = "nodownload"
+    $('#CD031Icon1').addClass(exerciseData.exercises[pageNum - 1].icon1);
+    $('#CD031Icon2').addClass(exerciseData.exercises[pageNum - 1].icon2);
+
+    $('#CD031').unbind();
+    $('#CD031').bind(clicker, function () {
+        CD031Play();
+    });
+    initPage();
+}
+
+        function CD031Play() {
+    step++;
+    console.log(step);
+    switch (step) {
+        case 1:
+            $('#CD031IconBlock1').hide();
+            $('#CD031IconBlock2').show();
+            $('#CD031Audio2').hide();
+            $('#CD031Audio1').get(0).pause();
+            $('#CD031Audio2').get(0).pause();
+            break;
+        case 2:
+            $('#CD031Audio1').get(0).pause();
+            $('#CD031Audio2').get(0).pause();
+            $('#CD031IconBlock2').hide();
+            $('#CD031VideoBlock').show();
+            $('#CD031').unbind();
+            $('#CD031Next').unbind();
+            $('#CD031Next').bind(clicker, function () {
+                $('#CD031Vid').html('');
+                CD031Play();
+            });
+            $('#CD031Vid').get(0).play();
+            break;
+        case 3:
+            $('#CD031Vid').get(0).pause();
+            $('#CD031').unbind();
+            $('#CD031Next').unbind();
+            $('#CD031Next').bind(clicker, function () {
+                CD031Play();
+            });
+            /*$('#CD031').bind(clicker, function () {
+                CD031Play();
+            });*/
+            $('#CD031VideoBlock').hide();
+            $('#CD031Icon1').removeClass(exerciseData.exercises[pageNum - 1].icon1);
+            $('#CD031Icon2').removeClass(exerciseData.exercises[pageNum - 1].icon2);
+            $('#CD031Icon1').addClass(exerciseData.exercises[pageNum - 1].icon3);
+            $('#CD031Icon2').addClass(exerciseData.exercises[pageNum - 1].icon4);
+            $('#CD031IconBlock1').show();
+            var mp3Audio3 = 'audio/' + exerciseData.exercises[pageNum - 1].audio3 + '.mp3';
+            var oggAudio3 = 'audio/' + exerciseData.exercises[pageNum - 1].audio3 + '.ogg';
+            var audioString3 = '<source src="' + mp3Audio3 + '" type="audio/mp3"><source src="' + oggAudio3 + '" type="audio/ogg">';
+            $('#CD031Audio1').html(audioString3);
+            $('#CD031Audio1').show();
+            $('#CD031Audio2').hide();
+            $('#CD031Audio1').get(0).currentTime = 0;
+            $('#CD031Audio1').get(0).play();
+            break;
+        case 4:
+            $('#CD031').unbind();
+            $('#CD031Next').unbind();
+            $('#CD031Next').bind(clicker, function () {
+                CD031Play();
+            });
+            /*$('#CD031').bind(clicker, function () {
+                CD031Play();
+            });*/
+            $('#CD031IconBlock1').hide();
+            $('#CD031IconBlock2').show();
+            var mp3Audio4 = 'audio/' + exerciseData.exercises[pageNum - 1].audio4 + '.mp3';
+            var oggAudio4 = 'audio/' + exerciseData.exercises[pageNum - 1].audio4 + '.ogg';
+            var audioString4 = '<source src="' + mp3Audio4 + '" type="audio/mp3"><source src="' + oggAudio4 + '" type="audio/ogg">';
+            $('#CD031Audio2').html(audioString4);
+            $('#CD031Audio1').get(0).pause();
+            $('#CD031Audio1').hide();
+            $('#CD031Audio2').show();
+            $('#CD031Audio2').get(0).currentTime = 0;
+            $('#CD031Audio2').get(0).play();
+            $('#CD031Audio1').html('');
+            break;
+        case 5:
+            $('#CD031Audio1').get(0).pause();
+            $('#CD031Audio2').get(0).pause();
+            nextPage();
+            break;
+
+    }
+
+
+
+
+}
+
+        $(document).ready(function() {
+            CD031();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD015 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .icCup {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icCup.svg');
+        }
+
+        .icHim {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icHim.svg');
+        }
+
+        .icHug {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icHug.svg');
+        }
+
+        .icLog {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icLog.svg');
+        }
+
+        .icMug {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icMug.svg');
+        }
+
+        .icNap {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icNap.svg');
+        }
+
+        .icPeas {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icPeas.svg');
+        }
+
+        .icRug {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icRug.svg');
+        }
+
+        .icSad {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icSad.svg');
+        }
+
+        .icSun {
+            background-image: url('file:///d:/Dropbox/OLT/~Drupal Versions/drp-countdownTX/img/icons/icSun.svg');
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD015" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD015",
+        "title": "Build a Word",
+        "dataSet": [
+            {
+                "icon": "icHug",
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "letters": [
+                    "h",
+                    "u",
+                    "g"
+                ]
+            },
+            {
+                "icon": "icNap",
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "letters": [
+                    "n",
+                    "a",
+                    "p"
+                ]
+            },
+            {
+                "icon": "icSun",
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "letters": [
+                    "s",
+                    "u",
+                    "n"
+                ]
+            },
+            {
+                "icon": "icLog",
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "letters": [
+                    "l",
+                    "o",
+                    "g"
+                ]
+            },
+            {
+                "icon": "icCup",
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "letters": [
+                    "c",
+                    "u",
+                    "p"
+                ]
+            },
+            {
+                "icon": "icHim",
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "letters": [
+                    "h",
+                    "i",
+                    "m"
+                ]
+            },
+            {
+                "icon": "icMug",
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "letters": [
+                    "m",
+                    "u",
+                    "g"
+                ]
+            },
+            {
+                "icon": "icPeas",
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "letters": [
+                    "p",
+                    "o",
+                    "d"
+                ]
+            },
+            {
+                "icon": "icRug",
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "letters": [
+                    "r",
+                    "u",
+                    "g"
+                ]
+            },
+            {
+                "icon": "icSad",
+                "colors": [
+                    "Blue",
+                    "Red",
+                    "Green"
+                ],
+                "letters": [
+                    "s",
+                    "a",
+                    "d"
+                ]
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD015();
+        }
+
+        function CD015() {
+
+    var htmlString = '';
+    htmlString += '<div id="CD015" class="fullScreen">';
+    htmlString += '<div id="CD015ColorBlock">';
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].colors.length; i++) {
+        htmlString += '<div id="CD015ColorTile' + (i + 1) + '" class="letterTileBack"><div class="letterTile ';
+        htmlString += 'letterTile' + exerciseData.exercises[pageNum - 1].dataSet[0].colors[i] + '"></div></div>';
+    }
+    htmlString += '</div>';
+
+    htmlString += '<div id="CD015LetterBlock">';
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].letters.length; i++) {
+        htmlString += '<div id="CD015LetterTile' + (i + 1) + '" class="letterTileBack"><div class="letterTile">';
+        htmlString += checkLetter(exerciseData.exercises[pageNum - 1].dataSet[0].letters[i]) + '</div></div>';
+    }
+    htmlString += '</div>';
+
+    htmlString += '<div id="CD015IconBlock">';
+    htmlString += '<div id="CD015image" class="blockIcon ' + exerciseData.exercises[pageNum - 1].dataSet[0].icon + '"></div>';
+    htmlString += '</div>';
+
+    htmlString += '</div>';
+
+
+    $('#CD015').html(htmlString);
+    $('#CD015image').css('font-size', '1.25em');
+    $('#CD015 .letterTile').css('font-size', '3.75em');
+    $('#CD015 .letterTile').css('opacity', '0');
+    $('#CD015 .blockIcon').css('opacity', '0');
+    $('#CD015').unbind();
+    $('#CD015').bind(clicker, function () {
+        CD015Play();
+    });
+    initPage();
+}
+
+        function CD015Play() {
+
+    var clickArray = [];
+    var totalClicks = 0; //negative one offset for first item
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+        totalClicks += exerciseData.exercises[pageNum - 1].dataSet[i].letters.length * 2 + 2;
+        clickArray.push(totalClicks);
+    }
+
+    if (step == 0) {
+        step = 2;
+    } else {
+        step++;
+    }
+
+
+    if (step > totalClicks) {
+        nextPage();
+    } else {
+        var ds = 0;
+        while (step > clickArray[ds]) {
+            ds++;
+        }
+        var subClick = (step - clickArray[ds]) + (exerciseData.exercises[pageNum - 1].dataSet[ds].letters.length * 2) + 1;
+
+        if (subClick == 0) {
+            var htmlString = '';
+            htmlString += '<div id="CD015" class="fullScreen">';
+            htmlString += '<div id="CD015ColorBlock">';
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[ds].colors.length; i++) {
+                htmlString += '<div id="CD015ColorTile' + (i + 1) + '" class="letterTileBack"><div class="letterTile ';
+                htmlString += 'letterTile' + exerciseData.exercises[pageNum - 1].dataSet[ds].colors[i] + '"></div></div>';
+            }
+            htmlString += '</div>';
+
+            htmlString += '<div id="CD015LetterBlock">';
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[ds].letters.length; i++) {
+                htmlString += '<div id="CD015LetterTile' + (i + 1) + '" class="letterTileBack"><div class="letterTile">';
+                htmlString += checkLetter(exerciseData.exercises[pageNum - 1].dataSet[ds].letters[i]) + '</div></div>';
+            }
+            htmlString += '</div>';
+
+            htmlString += '<div id="CD015IconBlock">';
+            htmlString += '<div id="CD015image" class="blockIcon ' + exerciseData.exercises[pageNum - 1].dataSet[ds].icon + '"></div>';
+            htmlString += '</div>';
+
+            htmlString += '</div>';
+
+
+            $('#CD015').html(htmlString);
+            $('#CD015image').css('font-size', '1.25em');
+            $('#CD015 .letterTile').css('font-size', '3.75em');
+            $('#CD015 .letterTile').css('opacity', '0');
+            $('#CD015 .blockIcon').css('opacity', '0');
+            $('#CD015').unbind();
+            $('#CD015').bind(clicker, function () {
+                CD015Play();
+            });
+        } else {
+            console.log(subClick);
+
+            if (subClick == 1) {
+                $('#CD015 .blockIcon').css('transition', 'all .5s 0s');
+                $('#CD015 .blockIcon').css('opacity', '100');
+            } else {
+                if (subClick < exerciseData.exercises[pageNum - 1].dataSet[ds].letters.length + 2) {
+                    $('#CD015ColorTile' + (subClick - 1) + ' .letterTile').css('transition', 'all .5s 0s');
+                    $('#CD015ColorTile' + (subClick - 1) + ' .letterTile').css('opacity', '100');
+                } else {
+                    $('#CD015LetterTile' + (subClick - 1 - exerciseData.exercises[pageNum - 1].dataSet[ds].letters.length) + ' .letterTile').css('transition', 'all .5s 0s');
+                    $('#CD015LetterTile' + (subClick - 1 - exerciseData.exercises[pageNum - 1].dataSet[ds].letters.length) + ' .letterTile').css('opacity', '100');
+                }
+            }
+            /*if (subClick < exerciseData.exercises[pageNum - 1].dataSet[ds].letters.length + 1) {
+                $('#CD015ColorTile' + (subClick) + ' .letterTile').css('transition', 'all .5s 0s');
+                $('#CD015ColorTile' + (subClick) + ' .letterTile').css('opacity', '100');
+            } else {
+                if (subClick < exerciseData.exercises[pageNum - 1].dataSet[ds].letters.length * 2 + 1) {
+                    var currentLetter = subClick - exerciseData.exercises[pageNum - 1].dataSet[ds].letters.length;
+                    $('#CD015LetterTile' + (subClick - 1 - exerciseData.exercises[pageNum - 1].dataSet[ds].letters.length) + ' .letterTile').css('transition', 'all .5s 0s');
+                    $('#CD015LetterTile' + (subClick- 1 - exerciseData.exercises[pageNum - 1].dataSet[ds].letters.length) + ' .letterTile').css('opacity', '100');
+                } else {
+                    $('#CD015 .blockIcon').css('transition', 'all .5s 0s');
+                    $('#CD015 .blockIcon').css('opacity', '100');
+                }
+            }*/
+        }
+    }
+}
+
+        $(document).ready(function() {
+            CD015();
+        });
+    </script>
+</body>
+</html>

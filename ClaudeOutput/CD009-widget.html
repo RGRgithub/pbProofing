@@ -1,0 +1,469 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD009 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD009" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD009",
+        "title": "Connect the Letter",
+        "dataSet": [
+            {
+                "icons": [
+                    "icLion",
+                    "icGumballs",
+                    "icFence"
+                ],
+                "toLeave": 2,
+                "letterTile": "g"
+            },
+            {
+                "icons": [
+                    "icGarden",
+                    "icUpsidedown",
+                    "icNose"
+                ],
+                "toLeave": 1,
+                "letterTile": "g"
+            },
+            {
+                "icons": [
+                    "icApple",
+                    "icLamp",
+                    "icGame"
+                ],
+                "toLeave": 3,
+                "letterTile": "g"
+            },
+            {
+                "icons": [
+                    "icMountain",
+                    "icFootball",
+                    "icGuitar"
+                ],
+                "toLeave": 3,
+                "letterTile": "g"
+            },
+            {
+                "icons": [
+                    "icToothbrush",
+                    "icNail",
+                    "icLemon"
+                ],
+                "toLeave": 3,
+                "letterTile": "l"
+            },
+            {
+                "icons": [
+                    "icGuineaPig",
+                    "icLadder",
+                    "icCake"
+                ],
+                "toLeave": 2,
+                "letterTile": "l"
+            },
+            {
+                "icons": [
+                    "icFox",
+                    "icLadybug",
+                    "icIgloo"
+                ],
+                "toLeave": 2,
+                "letterTile": "l"
+            },
+            {
+                "icons": [
+                    "icLightning",
+                    "icNeck",
+                    "icDog"
+                ],
+                "toLeave": 1,
+                "letterTile": "l"
+            },
+            {
+                "icons": [
+                    "icNurseFemale",
+                    "icGold",
+                    "icHamster"
+                ],
+                "toLeave": 1,
+                "letterTile": "n"
+            },
+            {
+                "icons": [
+                    "icSad",
+                    "icNap",
+                    "icMask"
+                ],
+                "toLeave": 2,
+                "letterTile": "n"
+            },
+            {
+                "icons": [
+                    "icAstronaut",
+                    "icNewspaper",
+                    "icLog"
+                ],
+                "toLeave": 2,
+                "letterTile": "n"
+            },
+            {
+                "icons": [
+                    "icPants",
+                    "icAnt",
+                    "icNest"
+                ],
+                "toLeave": 3,
+                "letterTile": "n"
+            },
+            {
+                "icons": [
+                    "icLollipop",
+                    "icUp",
+                    "icInside"
+                ],
+                "toLeave": 2,
+                "letterTile": "u"
+            },
+            {
+                "icons": [
+                    "icPopcorn",
+                    "icGift",
+                    "icUmbrella"
+                ],
+                "toLeave": 3,
+                "letterTile": "u"
+            },
+            {
+                "icons": [
+                    "icUnder",
+                    "icNeedle",
+                    "icMouth"
+                ],
+                "toLeave": 1,
+                "letterTile": "u"
+            },
+            {
+                "icons": [
+                    "icLeaf",
+                    "icDinosaur",
+                    "icNet"
+                ],
+                "toLeave": 2,
+                "letterTile": "d"
+            },
+            {
+                "icons": [
+                    "icPencils",
+                    "icDonut",
+                    "icGate"
+                ],
+                "toLeave": 2,
+                "letterTile": "d"
+            },
+            {
+                "icons": [
+                    "icInch",
+                    "icGloves",
+                    "icPeanut"
+                ],
+                "toLeave": 3,
+                "letterTile": "p"
+            },
+            {
+                "icons": [
+                    "icPeppermint",
+                    "icZipper",
+                    "icSnake"
+                ],
+                "toLeave": 1,
+                "letterTile": "p"
+            },
+            {
+                "icons": [
+                    "icGirl",
+                    "icRooster",
+                    "icLeg"
+                ],
+                "toLeave": 2,
+                "letterTile": "r"
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+        var CD009IconSize;
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD009();
+        }
+
+        function CD009() {
+
+    $('#CD009').css('padding-left', '0');
+    $('#CD009').css('padding-right', '0');
+    var colWidth = 100 / exerciseData.exercises[pageNum - 1].dataSet[0].icons.length;
+    CD009colWidthEms = ($('#CD009').width() / parseFloat($('#CD009').css('font-size'))) / exerciseData.exercises[pageNum - 1].dataSet[0].icons.length;
+    var colHeightEms = $('#CD009').height() / parseFloat($('#CD009').css('font-size'));
+    CD009IconSize = CD009colWidthEms * .7;
+
+    var htmlString = '';
+
+    htmlString += '<div class="letterTileBlock">';
+    htmlString += '<div id="CD009LetterTile" class="letterTileBack"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[0].letterTile) + '</div></div>';
+    htmlString += '</div>';
+
+    htmlString += '<div id="CD009IconBlock" class="flexBlock">';
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].icons.length; i++) {
+        if (exerciseData.exercises[pageNum - 1].dataSet[0].toLeave == (i + 1)) {
+            htmlString += '<div id="CD009image' + i + '" class="standardIcon hiddenIcon ' + exerciseData.exercises[pageNum - 1].dataSet[0].icons[i] + '"></div>';
+        } else {
+            htmlString += '<div id="CD009image' + i + '" class="standardIcon hiddenIcon toHide ' + exerciseData.exercises[pageNum - 1].dataSet[0].icons[i] + '"></div>';
+        }
+
+    }
+    htmlString += '</div>';
+
+
+    $('#CD009').html(htmlString);
+    $('#CD009 .standardIcon').css('transition', 'opacity .5s 0s');
+    //$('#CD009 .flexBlock').css('width', (CD009colWidthEms - .5) + 'em');
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].icons.length; i++) {
+        $('#CD009image' + i).css('height', CD009IconSize + 'em');
+        $('#CD009image' + i).css('width', CD009IconSize + 'em');
+    }
+    $('#CD009').unbind();
+    $('#CD009').bind(clicker, function () {
+        CD009Play();
+    });
+    initPage();
+}
+
+        function CD009Play() {
+    var clickArray = [];
+
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+
+    }
+    step++;
+    if (step + 1 > exerciseData.exercises[pageNum - 1].dataSet.length * 3) {
+        nextPage();
+    } else {
+        var subStep = step % 3;
+        var dataSet = Math.ceil(step / 3);
+        console.log('step:' + step);
+        console.log('dataSet:' + dataSet);
+        console.log('subStep:' + subStep);
+
+        if (subStep == 1) {
+            $('#CD009 .standardIcon').removeClass('hiddenIcon');
+        }
+
+        if (subStep == 2) {
+            $('#CD009 .toHide').hide(500);
+        }
+
+        if (subStep == 0) {
+            $('#CD009').css('padding-left', '0');
+            $('#CD009').css('padding-right', '0');
+            var colWidth = 100 / exerciseData.exercises[pageNum - 1].dataSet[dataSet].icons.length;
+            CD009colWidthEms = ($('#CD009').width() / parseFloat($('#CD009').css('font-size'))) / exerciseData.exercises[pageNum - 1].dataSet[dataSet].icons.length;
+            var colHeightEms = $('#CD009').height() / parseFloat($('#CD009').css('font-size'));
+            CD009IconSize = CD009colWidthEms * .7;
+
+            var htmlString = '';
+
+            htmlString += '<div class="letterTileBlock">';
+            htmlString += '<div id="CD009LetterTile" class="letterTileBack"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[dataSet].letterTile) + '</div></div>';
+            htmlString += '</div>';
+
+            htmlString += '<div id="CD009IconBlock" class="flexBlock">';
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[dataSet].icons.length; i++) {
+                if (exerciseData.exercises[pageNum - 1].dataSet[dataSet].toLeave == (i + 1)) {
+                    htmlString += '<div id="CD009image' + i + '" class="standardIcon hiddenIcon ' + exerciseData.exercises[pageNum - 1].dataSet[dataSet].icons[i] + '"></div>';
+                } else {
+                    htmlString += '<div id="CD009image' + i + '" class="standardIcon hiddenIcon toHide ' + exerciseData.exercises[pageNum - 1].dataSet[dataSet].icons[i] + '"></div>';
+                }
+
+            }
+            htmlString += '</div>';
+
+
+            $('#CD009').html(htmlString);
+            $('#CD009 .standardIcon').css('transition', 'opacity .5s 0s');
+            //$('#CD009 .flexBlock').css('width', (CD009colWidthEms - .5) + 'em');
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[dataSet].icons.length; i++) {
+                $('#CD009image' + i).css('height', CD009IconSize + 'em');
+                $('#CD009image' + i).css('width', CD009IconSize + 'em');
+            }
+            $('#CD009').unbind();
+            $('#CD009').bind(clicker, function () {
+                CD009Play();
+            });
+        }
+
+    }
+
+}
+
+        $(document).ready(function() {
+            CD009();
+        });
+    </script>
+</body>
+</html>

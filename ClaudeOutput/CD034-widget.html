@@ -1,0 +1,374 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD034 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD034" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD034",
+        "title": "Touch & Say",
+        "dataSet": [
+            [
+                "c",
+                "u",
+                "t"
+            ],
+            [
+                "l",
+                "a",
+                "p"
+            ],
+            [
+                "g",
+                "u",
+                "m"
+            ],
+            [
+                "f",
+                "a",
+                "n"
+            ],
+            [
+                "r",
+                "u",
+                "n"
+            ],
+            [
+                "h",
+                "u",
+                "m"
+            ],
+            [
+                "d",
+                "o",
+                "g"
+            ],
+            [
+                "c",
+                "a",
+                "n"
+            ],
+            [
+                "g",
+                "a",
+                "s"
+            ],
+            [
+                "u",
+                "s"
+            ],
+            [
+                "p",
+                "i",
+                "g"
+            ],
+            [
+                "s",
+                "u",
+                "n"
+            ],
+            [
+                "n",
+                "o",
+                "t"
+            ],
+            [
+                "l",
+                "i",
+                "d"
+            ],
+            [
+                "h",
+                "o",
+                "g"
+            ],
+            [
+                "c",
+                "u",
+                "p"
+            ],
+            [
+                "f",
+                "u",
+                "n"
+            ],
+            [
+                "g",
+                "a",
+                "p"
+            ],
+            [
+                "h",
+                "u",
+                "g"
+            ],
+            [
+                "l",
+                "o",
+                "g"
+            ]
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD034();
+        }
+
+        function CD034() {
+    var htmlString = '';
+    htmlString += '<div class="arrowBlock">';
+
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].length; i++) {
+        htmlString += '<div id="CD034LetterTile' + (i + 1) + '" class="letterTileBack letterTileBackUnderline letterTileBackUnderlineHidden"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[0][i]) + '</div></div>';
+    }
+
+    htmlString += '<div id="CD034Arrow" class="underArrow"></div>';
+    htmlString += '</div>';
+
+    $('#CD034').html(htmlString);
+
+    $('#CD034 .letterTileBack').css('text-align', 'center');
+    $('#CD034 .letterTileBack').css('font-size', '3em');
+    $('#CD034').unbind();
+    $('#CD034').bind(clicker, function () {
+        CD034Play();
+    });
+    initPage();
+}
+
+        function CD034Play() {
+    step++;
+    if (step == 1) {
+        step++;
+    }
+
+    var clickArray = [];
+    var totalClicks = 0;
+    var subClicks = 0;
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+        totalClicks += exerciseData.exercises[pageNum - 1].dataSet[i].length;
+        subClicks = exerciseData.exercises[pageNum - 1].dataSet[i].length;
+        totalClicks += 2;
+        subClicks++;
+        clickArray.push({
+            'total': totalClicks,
+            'subClicks': subClicks
+        });
+    }
+
+    console.log(clickArray);
+    if (step > clickArray[clickArray.length - 1].total) {
+        nextPage();
+
+    } else {
+        var dataSet = 0;
+        while (step > clickArray[dataSet].total) {
+            dataSet++;
+        }
+        var subStep = step - Math.abs(clickArray[dataSet].total - clickArray[dataSet].subClicks);
+        console.log('---------------');
+        console.log('step:' + step);
+        console.log('subStep:' + subStep);
+        console.log('dataSet:' + dataSet);
+        if (subStep > 0) {
+            if (subStep < clickArray[dataSet].subClicks) {
+                $('#CD034LetterTile' + subStep).removeClass('letterTileBackUnderlineHidden');
+            } else {
+                var width = $('#CD034LetterTile1').width();
+                $('#CD034Arrow').css('left', width / 2 + 'px');
+                var newLeft = $('#CD034 .arrowBlock').width() - width / 1.4;
+                $('#CD034Arrow').fadeIn(500, function () {
+                    $('#CD034Arrow').animate({
+
+                        left: newLeft + 'px'
+                    }, 1000);
+
+                });
+            }
+
+        } else {
+            var htmlString = '';
+            htmlString += '<div class="arrowBlock">';
+
+            for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[dataSet].length; i++) {
+                htmlString += '<div id="CD034LetterTile' + (i + 1) + '" class="letterTileBack letterTileBackUnderline letterTileBackUnderlineHidden"><div class="letterTile">' + checkLetter(exerciseData.exercises[pageNum - 1].dataSet[dataSet][i]) + '</div></div>';
+            }
+
+            htmlString += '<div id="CD034Arrow" class="underArrow"></div>';
+            htmlString += '</div>';
+
+            $('#CD034').html(htmlString);
+
+            $('#CD034 .letterTileBack').css('text-align', 'center');
+            $('#CD034 .letterTileBack').css('font-size', '3em');
+            $('#CD034').unbind();
+            $('#CD034').bind(clicker, function () {
+                CD034Play();
+            });
+        }
+    }
+}
+
+        $(document).ready(function() {
+            CD034();
+        });
+    </script>
+</body>
+</html>

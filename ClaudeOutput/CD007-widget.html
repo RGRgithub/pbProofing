@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD007 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD007" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD007",
+        "title": "Directionality",
+        "dataSet": [
+            {
+                "icons": [
+                    "icSchoolhouse",
+                    "icClock",
+                    "icBook",
+                    "icBackpack",
+                    "icPencils",
+                    "icTable",
+                    "icChalk"
+                ]
+            },
+            {
+                "icons": [
+                    "ic1blue",
+                    "ic2green",
+                    "ic3blue",
+                    "ic4green",
+                    "ic5blue",
+                    "ic6green",
+                    "ic7blue"
+                ]
+            },
+            {
+                "icons": [
+                    "icAblue",
+                    "icBgreen",
+                    "icCblue",
+                    "icDgreen",
+                    "icEblue",
+                    "icFgreen",
+                    "icGblue"
+                ]
+            }
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+        var CD007IconSize;
+        var CD007colWidthEms;
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD007();
+        }
+
+        function CD007() {
+
+    $('#CD007').css('padding-left', '0');
+    $('#CD007').css('padding-right', '0');
+    var colWidth = 100 / exerciseData.exercises[pageNum - 1].dataSet[0].icons.length;
+    var cols = exerciseData.exercises[pageNum - 1].dataSet[0].icons.length;
+    CD007colWidthEms = ($('#CD007').width() / parseFloat($('#CD007').css('font-size'))) / exerciseData.exercises[pageNum - 1].dataSet[0].icons.length;
+    var colHeightEms = $('#CD007').height() / parseFloat($('#CD007').css('font-size'));
+    CD007IconSize = CD007colWidthEms * .9;
+
+    if (CD007IconSize > colHeightEms * .8) {
+        CD007IconSize = CD007colWidthEms * .7;
+    }
+
+    var htmlString = '';
+
+
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].icons.length; i++) {
+        htmlString += '<div id="CD007IconBlock" class="flexBlockInline">';
+        htmlString += '<div id="CD007image' + i + '" class="standardIcon ' + exerciseData.exercises[pageNum - 1].dataSet[0].icons[i] + '"></div>';
+        htmlString += '</div>';
+    }
+
+    $('#CD007').html(htmlString);
+    $('#CD007 .flexBlock').css('width', (CD007colWidthEms - .5) + 'em');
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].icons.length; i++) {
+        $('#CD007image' + i).css('height', CD007IconSize + 'em');
+        $('#CD007image' + i).css('width', CD007IconSize + 'em');
+        $('#CD007image' + i).css('display', 'none');
+    }
+    $('#CD007').css('padding-top', (exerciseData.exercises[pageNum - 1].dataSet[0].icons.length * 2) + 'em');
+    $('#CD007 .standardIcon').fadeIn(500);
+    $('#CD007').unbind();
+    $('#CD007').bind(clicker, function () {
+        CD007Play();
+    });
+    initPage();
+}
+
+        function CD007Play() {
+    step++;
+    if (step + 1 > exerciseData.exercises[pageNum - 1].dataSet.length) {
+        nextPage();
+    } else {
+        $('#CD007').css('padding-left', '0');
+        $('#CD007').css('padding-right', '0');
+        var colWidth = 100 / exerciseData.exercises[pageNum - 1].dataSet[step].icons.length;
+        var cols = exerciseData.exercises[pageNum - 1].dataSet[step].icons.length;
+        CD007colWidthEms = ($('#CD007').width() / parseFloat($('#CD007').css('font-size'))) / exerciseData.exercises[pageNum - 1].dataSet[step].icons.length;
+        var colHeightEms = $('#CD007').height() / parseFloat($('#CD007').css('font-size'));
+        CD007IconSize = CD007colWidthEms * .9;
+
+        if (CD007IconSize > colHeightEms * .8) {
+            CD007IconSize = CD007colWidthEms * .7;
+        }
+
+        var htmlString = '';
+
+
+        for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[step].icons.length; i++) {
+            htmlString += '<div id="CD007IconBlock" class="flexBlockInline">';
+            htmlString += '<div id="CD007image' + i + '" class="standardIcon ' + exerciseData.exercises[pageNum - 1].dataSet[step].icons[i] + '"></div>';
+            htmlString += '</div>';
+        }
+
+
+        $('#CD007').html(htmlString);
+        $('#CD007 .flexBlock').css('width', (CD007colWidthEms - .5) + 'em');
+        for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[step].icons.length; i++) {
+            $('#CD007image' + i).css('height', CD007IconSize + 'em');
+            $('#CD007image' + i).css('width', CD007IconSize + 'em');
+            $('#CD007image' + i).css('display', 'none');
+        }
+
+        $('#CD007').css('padding-top', (exerciseData.exercises[pageNum - 1].dataSet[step].icons.length * 2) + 'em');
+        console.log('icons:' + exerciseData.exercises[pageNum - 1].dataSet[step].icons.length)
+        $('#CD007 .standardIcon').fadeIn(500);
+        $('#CD007').unbind();
+        $('#CD007').bind(clicker, function () {
+            CD007Play();
+        });
+
+    }
+
+}
+
+        $(document).ready(function() {
+            CD007();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CD039 Widget</title>
+    <style>
+
+        body, html {
+            width: 100%;
+            font-size: 14px;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #9ed6de;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .contentPanel {
+            position: absolute;
+            top: 1em;
+            bottom: 3em;
+            left: 1em;
+            right: 1em;
+            text-align: center;
+            overflow: hidden;
+            padding: 2em;
+            padding-top: 4em;
+            background-color: rgba(255, 255, 255, .95);
+            border-radius: 1em;
+            display: block;
+            z-index: 2;
+        }
+
+        .fullScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 4em;
+        }
+
+        .letter {
+            border-bottom: solid .08em rgba(0,0,0,1);
+            width: 100%;
+            display: block;
+        }
+
+        .vowel {
+            color: rgba(200,0,0,1);
+            border-bottom: solid .08em rgba(200,0,0,1);
+            display: block;
+            width: 100%;
+        }
+
+        .letterTileBack {
+            display: inline-block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            margin-left: .25em;
+            margin-right: .25em;
+            cursor: pointer;
+        }
+
+        .letterTile {
+            display: block;
+            position: relative;
+            font-size: 2em;
+            height: 2em;
+            width: 1.5em;
+            background-color: #fff;
+            border: solid .02em rgba(0,0,0,.8);
+            border-radius: .05em;
+            cursor: pointer;
+            text-align: center;
+            line-height: 1.8em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .letterTileGreen { background-color: #0c0; }
+        .letterTileBlue { background-color: #00c; }
+        .letterTileRed { background-color: #f00; }
+        .letterTileYellow { background-color: #ff0; }
+        .letterTilePurple { background-color: #90c; }
+        .letterTileOrange { background-color: #fa0; }
+
+        .blockIcon {
+            height: 12em;
+            width: 12em;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+            display: inline-block;
+            margin: 1em;
+        }
+
+        .standardIcon {
+            position: relative;
+            height: 4em;
+            width: 4em;
+            display: inline-block;
+            border-radius: 50%;
+            background-size: 100% 100%;
+            background-position: center center;
+            background-color: #b4e2f0;
+        }
+
+        .heartWord {
+            font-size: 6em;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="CD039" class="contentPanel"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        var exerciseData = {
+            "exercises": [
+    {
+        "pageID": "CD039",
+        "title": "Before/After",
+        "type": "icon",
+        "dataSet": [
+            [
+                {
+                    "image": "icEggsCarton",
+                    "position": "1"
+                },
+                {
+                    "image": "icEggsPan",
+                    "position": "2"
+                }
+            ],
+            [
+                {
+                    "image": "icCupcakeAfter",
+                    "position": "2"
+                },
+                {
+                    "image": "icCupcake",
+                    "position": "1"
+                }
+            ],
+            [
+                {
+                    "image": "icFlowersSeed",
+                    "position": "1"
+                },
+                {
+                    "image": "icFlowersGrow",
+                    "position": "2"
+                }
+            ],
+            [
+                {
+                    "image": "icDoughCook",
+                    "position": "2"
+                },
+                {
+                    "image": "icDoughMix",
+                    "position": "1"
+                }
+            ],
+            [
+                {
+                    "image": "icCerealDry",
+                    "position": "1"
+                },
+                {
+                    "image": "icCerealMilk",
+                    "position": "2"
+                }
+            ],
+            [
+                {
+                    "image": "icNestEggs",
+                    "position": "1"
+                },
+                {
+                    "image": "icNestEggsHatch",
+                    "position": "2"
+                }
+            ],
+            [
+                {
+                    "image": "icToothpasteBrushing",
+                    "position": "2"
+                },
+                {
+                    "image": "icToothbrush",
+                    "position": "1"
+                }
+            ],
+            [
+                {
+                    "image": "icSandwichWhole",
+                    "position": "2"
+                },
+                {
+                    "image": "icSandwichParts",
+                    "position": "1"
+                }
+            ],
+            [
+                {
+                    "image": "icCookiePlain",
+                    "position": "1"
+                },
+                {
+                    "image": "icCookieDecorate",
+                    "position": "2"
+                }
+            ],
+            [
+                {
+                    "image": "icHamburger",
+                    "position": "1"
+                },
+                {
+                    "image": "icHamburgerBite",
+                    "position": "2"
+                }
+            ],
+            [
+                {
+                    "image": "icSalad",
+                    "position": "2"
+                },
+                {
+                    "image": "icVeggies",
+                    "position": "1"
+                }
+            ]
+        ]
+    }
+]
+        };
+
+        var pageNum = 1;
+        var step = 0;
+        var clicker = 'click';
+
+        function checkLetter(letter) {
+            var vowelString = 'aeiouAEIOU';
+            if (vowelString.indexOf(letter) > -1) {
+                return '<span class="vowel">' + letter + '</span>';
+            } else {
+                return '<span class="letter">' + letter + '</span>';
+            }
+        }
+
+        function initPage() {
+            // Removed - not needed for standalone
+        }
+
+        function nextPage() {
+            // Loop back to start
+            step = 0;
+            CD039();
+        }
+
+        function CD039() {
+    if (exerciseData.exercises[pageNum - 1].type == "image") {
+        var htmlString = '';
+
+        htmlString += '<div class="imageLargeBox">';
+
+        for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].length; i++) {
+            htmlString += '<img id="CD009Image' + (i + 1) + '" class="imageLarge" src="img/' + exerciseData.exercises[pageNum - 1].dataSet[0][i].image + '" />';
+        }
+
+        htmlString += '</div>';
+
+        $('#CD039').html(htmlString);
+        $('#CD039 .imageLarge').css('height', 'auto');
+        $('#CD039 .imageLarge').css('width', '25%');
+        $('#CD039 .imageLarge').css('position', 'absolute');
+        $('#CD039 .imageLarge').css('top', '1em');
+        for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].length; i++) {
+            $('#CD009Image' + (i + 1)).css('left', (i * 26) + '%');
+        }
+
+    } else {
+        var htmlString = '';
+
+        htmlString += '<div class="imageLargeBox">';
+
+        for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].length; i++) {
+            htmlString += '<div id="CD009Image' + (i + 1) + '" class="imageLarge standardIcon ' + exerciseData.exercises[pageNum - 1].dataSet[0][i].image + '" ></div>';
+        }
+
+        htmlString += '</div>';
+
+        $('#CD039').html(htmlString);
+        $('#CD039 .imageLarge').css('height', '16em');
+        $('#CD039 .imageLarge').css('width', '16em');
+        $('#CD039 .imageLarge').css('position', 'absolute');
+        $('#CD039 .imageLarge').css('top', '1em');
+        for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[0].length; i++) {
+            $('#CD009Image' + (i + 1)).css('left', (i * 26) + '%');
+        }
+    }
+
+    $('#CD039').unbind();
+    $('#CD039').bind(clicker, function () {
+        CD039Play();
+    });
+    initPage();
+}
+
+        function CD039Play() {
+    //Build Image Here
+    step++;
+    if (step == 1) {
+        step++;
+    }
+
+    var clickArray = [];
+    var totalClicks = 0;
+    var subClicks = 0;
+
+    for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet.length; i++) {
+        subClicks = 0;
+        for (j = 0; j < exerciseData.exercises[pageNum - 1].dataSet[i].length; j++) {
+            totalClicks++;
+            subClicks++;
+        }
+        totalClicks++;
+        clickArray.push({
+            'total': totalClicks,
+            'subClicks': subClicks
+        });
+    }
+
+    console.log(clickArray);
+
+    if (step > clickArray[clickArray.length - 1].total) {
+        nextPage();
+    } else {
+        var set = 0;
+        while (step > clickArray[set].total) {
+            set++;
+        }
+        console.log('dataSet:' + set);
+        var subClick = -1 * ((clickArray[set].total - step) - clickArray[set].subClicks);
+        console.log('subclick:' + subClick);
+        if (subClick > 0) {
+            var blockId = exerciseData.exercises[pageNum - 1].dataSet[set][subClick - 1].position;
+            var offset = 50;
+            if (clickArray[set].subClicks == 3) {
+                offset = 25;
+            }
+            $('#CD009Image' + blockId).css('transition', 'all 1s');
+            $('#CD009Image' + blockId).css('left', ((subClick - 1) * 26) + offset + '%');
+            $('#CD009Image' + blockId).css('top', '16em');
+
+        } else {
+            if (exerciseData.exercises[pageNum - 1].type == "image") {
+                var htmlString = '';
+
+                htmlString += '<div class="imageLargeBox">';
+
+                for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[set].length; i++) {
+                    htmlString += '<img id="CD009Image' + (i + 1) + '" class="imageLarge" src="img/' + exerciseData.exercises[pageNum - 1].dataSet[set][i].image + '" />';
+                }
+
+                htmlString += '</div>';
+
+                $('#CD039').html(htmlString);
+                $('#CD039 .imageLarge').css('height', 'auto');
+                $('#CD039 .imageLarge').css('width', '25%');
+                $('#CD039 .imageLarge').css('position', 'absolute');
+                $('#CD039 .imageLarge').css('top', '1em');
+                for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[set].length; i++) {
+                    $('#CD009Image' + (i + 1)).css('left', (i * 26) + '%');
+                }
+
+            } else {
+                var htmlString = '';
+
+                htmlString += '<div class="imageLargeBox">';
+
+                for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[set].length; i++) {
+                    htmlString += '<div id="CD009Image' + (i + 1) + '" class="imageLarge standardIcon ' + exerciseData.exercises[pageNum - 1].dataSet[set][i].image + '" ></div>';
+                }
+
+                htmlString += '</div>';
+
+                $('#CD039').html(htmlString);
+                $('#CD039 .imageLarge').css('height', '16em');
+                $('#CD039 .imageLarge').css('width', '16em');
+                $('#CD039 .imageLarge').css('position', 'absolute');
+                $('#CD039 .imageLarge').css('top', '1em');
+                for (i = 0; i < exerciseData.exercises[pageNum - 1].dataSet[set].length; i++) {
+                    $('#CD009Image' + (i + 1)).css('left', (i * 26) + '%');
+                }
+            }
+            $('#CD039').unbind();
+            $('#CD039').bind(clicker, function () {
+                CD039Play();
+            });
+        }
+
+    }
+
+
+
+}
+
+        $(document).ready(function() {
+            CD039();
+        });
+    </script>
+</body>
+</html>
